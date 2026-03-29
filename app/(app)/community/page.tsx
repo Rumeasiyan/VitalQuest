@@ -6,7 +6,11 @@ import { getCommunityOverview, requireViewer } from '@/lib/vitalquest';
 
 export default async function CommunityPage() {
     const viewer = await requireViewer();
+    type ViewerMembership = (typeof viewer.guildMemberships)[number];
     const { guilds, leaderboard, recentPosts } = await getCommunityOverview();
+    type CommunityGuild = (typeof guilds)[number];
+    type CommunityPost = (typeof recentPosts)[number];
+    type LeaderboardUser = (typeof leaderboard)[number];
     const activeGuildId = viewer.guildMemberships[0]?.guildId;
 
     return (
@@ -34,9 +38,10 @@ export default async function CommunityPage() {
             <section className="grid gap-5 xl:grid-cols-[1fr_320px]">
                 <div className="space-y-5">
                     <div className="grid gap-5 lg:grid-cols-3">
-                        {guilds.map((guild) => {
+                        {guilds.map((guild: CommunityGuild) => {
                             const joined = viewer.guildMemberships.some(
-                                (membership) => membership.guildId === guild.id,
+                                (membership: ViewerMembership) =>
+                                    membership.guildId === guild.id,
                             );
 
                             return (
@@ -130,7 +135,7 @@ export default async function CommunityPage() {
                         ) : null}
 
                         <div className="mt-5 space-y-4">
-                            {recentPosts.map((post) => (
+                            {recentPosts.map((post: CommunityPost) => (
                                 <article
                                     key={post.id}
                                     className="rounded-[24px] border bg-card p-5"
@@ -163,7 +168,7 @@ export default async function CommunityPage() {
                         Current top performers
                     </h3>
                     <div className="mt-5 space-y-3">
-                        {leaderboard.map((user, index) => (
+                        {leaderboard.map((user: LeaderboardUser, index: number) => (
                             <div
                                 key={user.id}
                                 className="flex items-center justify-between rounded-2xl bg-muted/45 px-4 py-3"

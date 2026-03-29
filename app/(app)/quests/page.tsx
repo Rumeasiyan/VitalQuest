@@ -13,19 +13,24 @@ const toneMap = {
 
 export default async function QuestsPage() {
     const viewer = await requireViewer();
+    type ViewerQuest = (typeof viewer.quests)[number];
     const sections = [
         {
             label: 'Daily quests',
-            quests: viewer.quests.filter((quest) => quest.frequency === 'DAILY'),
+            quests: viewer.quests.filter(
+                (quest: ViewerQuest) => quest.frequency === 'DAILY',
+            ),
         },
         {
             label: 'Weekly quests',
-            quests: viewer.quests.filter((quest) => quest.frequency === 'WEEKLY'),
+            quests: viewer.quests.filter(
+                (quest: ViewerQuest) => quest.frequency === 'WEEKLY',
+            ),
         },
         {
             label: 'Seasonal quests',
             quests: viewer.quests.filter(
-                (quest) => quest.frequency === 'SEASONAL',
+                (quest: ViewerQuest) => quest.frequency === 'SEASONAL',
             ),
         },
     ];
@@ -70,7 +75,7 @@ export default async function QuestsPage() {
                         </div>
 
                         <div className="mt-6 space-y-4">
-                            {quests.map((quest) => {
+                            {quests.map((quest: ViewerQuest) => {
                                 const progress = Math.min(
                                     100,
                                     Math.round(

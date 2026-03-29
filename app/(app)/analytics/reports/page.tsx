@@ -6,6 +6,7 @@ import { requireViewer } from '@/lib/vitalquest';
 
 export default async function AnalyticsReportsPage() {
     const viewer = await requireViewer();
+    type ViewerExport = (typeof viewer.exports)[number];
 
     return (
         <div className="space-y-5">
@@ -60,7 +61,7 @@ export default async function AnalyticsReportsPage() {
                 <p className="eyebrow">Recent activity</p>
                 <div className="mt-5 space-y-3">
                     {viewer.exports.length > 0 ? (
-                        viewer.exports.map((record) => (
+                        viewer.exports.map((record: ViewerExport) => (
                             <div
                                 key={record.id}
                                 className="rounded-2xl bg-muted/45 px-4 py-3 text-sm"

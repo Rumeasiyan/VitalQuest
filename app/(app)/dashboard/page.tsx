@@ -15,13 +15,19 @@ import {
 
 export default async function DashboardPage() {
     const viewer = await requireViewer();
+    type ViewerConnection = (typeof viewer.connections)[number];
+    type ViewerMetric = (typeof viewer.metrics)[number];
+    type ViewerChapter = (typeof viewer.storyChapters)[number];
+    type ViewerQuest = (typeof viewer.quests)[number];
     const profile = viewer.profile!;
     const latestConnection = viewer.connections.find(
-        (connection) => connection.lastSyncedAt,
+        (connection: ViewerConnection) => connection.lastSyncedAt,
     );
     const activeGuild = viewer.guildMemberships[0]?.guild;
-    const activeQuests = viewer.quests.slice(0, 3);
-    const wellnessTrend = viewer.metrics.map((metric) => metric.xpEarned);
+    const activeQuests: ViewerQuest[] = viewer.quests.slice(0, 3);
+    const wellnessTrend = viewer.metrics.map(
+        (metric: ViewerMetric) => metric.xpEarned,
+    );
     const levelProgress = calculateLevelProgress(profile.xp);
 
     return (
@@ -165,7 +171,7 @@ export default async function DashboardPage() {
                     </div>
 
                     <div className="mt-6 space-y-4">
-                        {activeQuests.map((quest) => (
+                        {activeQuests.map((quest: ViewerQuest) => (
                             <article
                                 key={quest.id}
                                 className="rounded-[26px] border bg-muted/50 p-5"
@@ -291,7 +297,7 @@ export default async function DashboardPage() {
                             <p className="text-sm font-semibold text-muted-foreground">
                                 {
                                     viewer.storyChapters.find(
-                                        (chapter) =>
+                                        (chapter: ViewerChapter) =>
                                             chapter.status === 'AVAILABLE',
                                     )?.sceneLabel
                                 }
@@ -299,7 +305,7 @@ export default async function DashboardPage() {
                             <h4 className="mt-2 text-xl font-semibold">
                                 {
                                     viewer.storyChapters.find(
-                                        (chapter) =>
+                                        (chapter: ViewerChapter) =>
                                             chapter.status === 'AVAILABLE',
                                     )?.title
                                 }
@@ -307,7 +313,7 @@ export default async function DashboardPage() {
                             <p className="mt-3 text-sm leading-6 text-muted-foreground">
                                 {
                                     viewer.storyChapters.find(
-                                        (chapter) =>
+                                        (chapter: ViewerChapter) =>
                                             chapter.status === 'AVAILABLE',
                                     )?.summary
                                 }
@@ -354,7 +360,7 @@ export default async function DashboardPage() {
                         <h3 className="text-lg font-semibold">Connections</h3>
                     </div>
                     <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                        {viewer.connections.filter((connection) => connection.status === 'CONNECTED').length}{' '}
+                        {viewer.connections.filter((connection: ViewerConnection) => connection.status === 'CONNECTED').length}{' '}
                         providers configured, with the latest sync logged{' '}
                         {latestConnection?.lastSyncedAt
                             ? 'within the last day.'
@@ -369,7 +375,7 @@ export default async function DashboardPage() {
                     </div>
                     <p className="mt-4 text-sm leading-6 text-muted-foreground">
                         {
-                            viewer.quests.filter((quest) => quest.status === 'COMPLETED').length
+                            viewer.quests.filter((quest: ViewerQuest) => quest.status === 'COMPLETED').length
                         }{' '}
                         completed quests across fitness, nutrition, mindfulness,
                         and recovery loops.

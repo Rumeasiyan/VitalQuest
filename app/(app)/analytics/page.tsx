@@ -9,6 +9,8 @@ import { requireViewer } from '@/lib/vitalquest';
 export default async function AnalyticsPage() {
     const viewer = await requireViewer();
     type ViewerMetric = (typeof viewer.metrics)[number];
+    type ViewerExport = (typeof viewer.exports)[number];
+    const xpTrend = viewer.metrics.map((metric: ViewerMetric) => metric.xpEarned);
     const sleep = viewer.metrics.map((metric: ViewerMetric) =>
         Number(metric.sleepHours.toFixed(1)),
     );
@@ -61,7 +63,7 @@ export default async function AnalyticsPage() {
                 <article className="panel p-5 sm:p-6">
                     <p className="eyebrow">Weekly XP</p>
                     <p className="mt-4 text-4xl font-semibold">{totalXp}</p>
-                    <Sparkline values={viewer.metrics.map((metric) => metric.xpEarned)} className="mt-4" />
+                    <Sparkline values={xpTrend} className="mt-4" />
                 </article>
                 <article className="panel p-5 sm:p-6">
                     <p className="eyebrow">Sleep stability</p>
@@ -98,7 +100,7 @@ export default async function AnalyticsPage() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {viewer.metrics.map((metric) => (
+                                {viewer.metrics.map((metric: ViewerMetric) => (
                                     <tr key={metric.id} className="border-t">
                                         <td className="py-4 pr-6">
                                             {new Intl.DateTimeFormat('en', {
@@ -147,7 +149,7 @@ export default async function AnalyticsPage() {
                         <p className="eyebrow">Recent exports</p>
                         <div className="mt-5 space-y-3">
                             {viewer.exports.length > 0 ? (
-                                viewer.exports.map((record) => (
+                                viewer.exports.map((record: ViewerExport) => (
                                     <div
                                         key={record.id}
                                         className="flex items-center justify-between rounded-2xl bg-muted/45 px-4 py-3"

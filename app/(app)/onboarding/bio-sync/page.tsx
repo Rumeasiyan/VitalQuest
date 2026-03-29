@@ -6,6 +6,7 @@ import { formatProvider, requireViewer } from '@/lib/vitalquest';
 
 export default async function OnboardingBioSyncPage() {
     const viewer = await requireViewer();
+    type ViewerConnection = (typeof viewer.connections)[number];
 
     return (
         <div className="space-y-5">
@@ -25,7 +26,7 @@ export default async function OnboardingBioSyncPage() {
             </section>
 
             <section className="grid gap-5 lg:grid-cols-2">
-                {viewer.connections.map((connection) => (
+                {viewer.connections.map((connection: ViewerConnection) => (
                     <article key={connection.id} className="panel p-5 sm:p-6">
                         <div className="flex items-center justify-between">
                             <h3 className="text-2xl font-semibold">

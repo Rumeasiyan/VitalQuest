@@ -6,7 +6,10 @@ import { getCategoryLabel, requireViewer } from '@/lib/vitalquest';
 
 export default async function DailyQuestsPage() {
     const viewer = await requireViewer();
-    const dailyQuests = viewer.quests.filter((quest) => quest.frequency === 'DAILY');
+    type ViewerQuest = (typeof viewer.quests)[number];
+    const dailyQuests = viewer.quests.filter(
+        (quest: ViewerQuest) => quest.frequency === 'DAILY',
+    );
 
     return (
         <div className="space-y-5">
@@ -26,7 +29,7 @@ export default async function DailyQuestsPage() {
             </section>
 
             <section className="space-y-4">
-                {dailyQuests.map((quest) => (
+                {dailyQuests.map((quest: ViewerQuest) => (
                     <article key={quest.id} className="panel p-5 sm:p-6">
                         <div className="flex flex-wrap gap-2">
                             <StatusPill tone="accent">{getCategoryLabel(quest.category)}</StatusPill>

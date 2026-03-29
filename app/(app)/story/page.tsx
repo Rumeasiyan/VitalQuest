@@ -4,6 +4,7 @@ import { requireViewer } from '@/lib/vitalquest';
 
 export default async function StoryPage() {
     const viewer = await requireViewer();
+    type ViewerChapter = (typeof viewer.storyChapters)[number];
 
     return (
         <div className="space-y-5">
@@ -21,7 +22,7 @@ export default async function StoryPage() {
 
             <section className="panel p-5 sm:p-6">
                 <div className="space-y-4">
-                    {viewer.storyChapters.map((chapter) => (
+                    {viewer.storyChapters.map((chapter: ViewerChapter) => (
                         <article
                             key={chapter.id}
                             className="rounded-[28px] border bg-muted/45 p-5 sm:p-6"

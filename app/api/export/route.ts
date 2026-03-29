@@ -95,13 +95,15 @@ export async function GET(request: Request) {
             },
         },
     });
+    type ViewerMetric = (typeof viewer.metrics)[number];
+    type ViewerQuest = (typeof viewer.quests)[number];
 
     await recordExport(viewer.id, format.toUpperCase(), timeframe);
 
     if (format === 'csv') {
         const csv = toCsv([
             ['Date', 'Steps', 'SleepHours', 'MindfulnessMinutes', 'XpEarned'],
-            ...viewer.metrics.map((metric) => [
+            ...viewer.metrics.map((metric: ViewerMetric) => [
                 metric.capturedOn.toISOString(),
                 metric.steps,
                 metric.sleepHours,
@@ -125,8 +127,8 @@ export async function GET(request: Request) {
         `Level: ${viewer.profile?.level || 1}`,
         `Wellbeing score: ${viewer.profile?.wellbeingScore || 0}`,
         `Streak days: ${viewer.profile?.streakDays || 0}`,
-        `XP this period: ${viewer.metrics.reduce((sum, metric) => sum + metric.xpEarned, 0)}`,
-        `Completed quests: ${viewer.quests.filter((quest) => quest.status === 'COMPLETED').length}`,
+        `XP this period: ${viewer.metrics.reduce((sum: number, metric: ViewerMetric) => sum + metric.xpEarned, 0)}`,
+        `Completed quests: ${viewer.quests.filter((quest: ViewerQuest) => quest.status === 'COMPLETED').length}`,
     ]);
 
     return new Response(pdf, {

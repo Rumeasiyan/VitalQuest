@@ -3,6 +3,7 @@ import { formatProvider, requireViewer } from '@/lib/vitalquest';
 
 export default async function BioSyncHistoryPage() {
     const viewer = await requireViewer();
+    type ViewerConnection = (typeof viewer.connections)[number];
 
     return (
         <div className="space-y-5">
@@ -33,7 +34,7 @@ export default async function BioSyncHistoryPage() {
                             </tr>
                         </thead>
                         <tbody>
-                            {viewer.connections.map((connection) => (
+                            {viewer.connections.map((connection: ViewerConnection) => (
                                 <tr key={connection.id} className="border-t">
                                     <td className="py-4 pr-6">{formatProvider(connection.provider)}</td>
                                     <td className="py-4 pr-6">{connection.status}</td>

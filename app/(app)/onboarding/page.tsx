@@ -6,9 +6,10 @@ import { requireViewer } from '@/lib/vitalquest';
 
 export default async function OnboardingPage() {
     const viewer = await requireViewer();
+    type ViewerConnection = (typeof viewer.connections)[number];
     const profileReady = Boolean(viewer.profile?.primaryGoal);
     const connectedProviders = viewer.connections.filter(
-        (connection) => connection.status === 'CONNECTED',
+        (connection: ViewerConnection) => connection.status === 'CONNECTED',
     ).length;
     const questReady = viewer.quests.length > 0;
 

@@ -6,7 +6,9 @@ import { getCommunityOverview, requireViewer } from '@/lib/vitalquest';
 
 export default async function CommunityGuildsPage() {
     const viewer = await requireViewer();
+    type ViewerMembership = (typeof viewer.guildMemberships)[number];
     const { guilds } = await getCommunityOverview();
+    type CommunityGuild = (typeof guilds)[number];
 
     return (
         <div className="space-y-5">
@@ -26,9 +28,10 @@ export default async function CommunityGuildsPage() {
             </section>
 
             <section className="grid gap-5 lg:grid-cols-3">
-                {guilds.map((guild) => {
+                {guilds.map((guild: CommunityGuild) => {
                     const joined = viewer.guildMemberships.some(
-                        (membership) => membership.guildId === guild.id,
+                        (membership: ViewerMembership) =>
+                            membership.guildId === guild.id,
                     );
 
                     return (

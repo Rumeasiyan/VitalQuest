@@ -6,7 +6,10 @@ import { requireViewer } from '@/lib/vitalquest';
 
 export default async function WeeklyQuestsPage() {
     const viewer = await requireViewer();
-    const weeklyQuests = viewer.quests.filter((quest) => quest.frequency === 'WEEKLY');
+    type ViewerQuest = (typeof viewer.quests)[number];
+    const weeklyQuests = viewer.quests.filter(
+        (quest: ViewerQuest) => quest.frequency === 'WEEKLY',
+    );
 
     return (
         <div className="space-y-5">
@@ -26,7 +29,7 @@ export default async function WeeklyQuestsPage() {
             </section>
 
             <section className="space-y-4">
-                {weeklyQuests.map((quest) => (
+                {weeklyQuests.map((quest: ViewerQuest) => (
                     <article key={quest.id} className="panel p-5 sm:p-6">
                         <div className="flex flex-wrap gap-2">
                             <StatusPill tone="accent">{quest.frequency}</StatusPill>

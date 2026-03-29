@@ -306,7 +306,7 @@ export async function requireViewer() {
 
     await ensureWorkspace(user.id, user.name ?? undefined);
 
-    return prisma.user.findUniqueOrThrow({
+    return getPrisma().user.findUniqueOrThrow({
         where: { id: user.id },
         include: {
             profile: true,

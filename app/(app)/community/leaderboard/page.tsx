@@ -4,6 +4,7 @@ import { getCommunityOverview } from '@/lib/vitalquest';
 
 export default async function CommunityLeaderboardPage() {
     const { leaderboard } = await getCommunityOverview();
+    type LeaderboardUser = (typeof leaderboard)[number];
 
     return (
         <div className="space-y-5">
@@ -24,7 +25,7 @@ export default async function CommunityLeaderboardPage() {
 
             <section className="panel p-5 sm:p-6">
                 <div className="space-y-4">
-                    {leaderboard.map((user, index) => (
+                    {leaderboard.map((user: LeaderboardUser, index: number) => (
                         <article
                             key={user.id}
                             className="flex flex-col gap-3 rounded-[26px] border bg-muted/45 px-5 py-5 sm:flex-row sm:items-center sm:justify-between"
