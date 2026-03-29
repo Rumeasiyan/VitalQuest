@@ -240,3 +240,29 @@ The settings pages cover general controls, privacy posture, and notification pre
 ## 2.8 Prototype Limitations and Future Implementation
 
 The prototype demonstrates the main navigation structure and user flows, but several features would require deeper final implementation. These include full wearable API integration, stronger notification delivery, richer social moderation, full billing workflows, and more advanced reporting logic. These limitations are positive in the context of the prototype because they indicate how the business could be extended into a production-ready service.
+
+# Chapter 3: Task 2 - Reflection on Strategic Analysis and Systems Design
+
+## 3.1 Verified Progress as a Competitive Advantage
+
+One of the strongest ideas in the earlier analysis was verified progress through Bio-Sync. This was identified as a competitive advantage because many gamified platforms rely on manual input and can be manipulated. In the prototype, this strategy is reflected in the Bio-Sync pages, the dashboard, and the quest system. The user can see provider status, sync history, imported values, and quest-related progress that is tied to trusted health signals. This directly implements the strategic idea that credibility should come from wearable-linked data rather than self-reporting.
+
+## 3.2 Holistic Wellbeing Model in the Prototype
+
+The SWOT and competitive advantage discussion emphasised holistic wellbeing instead of fitness-only tracking. This has been reflected in the prototype through the way the dashboard and avatar system combine strength, mana, resilience, sleep, streaks, and wellbeing score. The design shows that physical effort, recovery, and mindfulness belong to one progression model. This supports the original business idea that VitalQuest should differentiate itself by linking multiple dimensions of wellbeing into one system rather than treating them as separate tools.
+
+## 3.3 Narrative-Driven Retention Through Quests and Story
+
+The earlier strategic work argued that retention should come from narrative motivation, not only graphs or reminders. That decision is visible in the quest and story pages. Quests include narrative context, rewards, and progression logic, while the story page shows chapters, unlock conditions, and rewards tied to behaviour. This is a direct implementation of the design goal that user actions should unlock meaning and progression. Compared with a normal tracking website, this makes the prototype more distinctive and closer to the proposed RPG-style business model.
+
+## 3.4 Community and Guild Engagement as a Strategic Feature
+
+Porter’s Five Forces and the competitive analysis highlighted community as a retention mechanism and a source of network effects. That strategic decision appears clearly in the community hub, guild directory, and leaderboard pages. Users can join guilds, post updates, and compare performance in a social environment. In prototype form, these functions show how VitalQuest can build accountability and belonging without becoming a generic social feed. This reflects the planned differentiation from competitors by making community part of the wellbeing loop rather than a separate add-on.
+
+## 3.5 Translation of Systems Design into the Prototype
+
+The functional requirements and use cases were also reflected in the prototype. Bio-Sync integration appears through the connection and history pages. Quest management appears through the quest board and completion actions. Community participation appears through guild and leaderboard pages. Progress monitoring appears in the dashboard and analytics pages, including report export options. Profile and onboarding pages reflect the need for user setup, baseline goal capture, and guided entry into the system. Together, these pages show that the prototype is not just visually aligned with the business concept but also structurally aligned with the earlier systems design.
+
+## 3.6 Changes Made from Coursework 1 and Their Rationale
+
+Some changes were necessary when moving from concept to prototype. First, AI-driven personalisation, moderation workflows, and in-app support were not implemented in full, because the prototype needed to prioritise the clearest user-facing features within limited time. Second, the social features were implemented as focused guild, feed, and leaderboard pages rather than a larger open community ecosystem. This was more suitable for demonstrating the idea clearly. Third, the prototype placed strong emphasis on dashboard, Bio-Sync, quests, and reports because these pages best show the uniqueness of VitalQuest. These adjustments do not weaken the original concept. Instead, they make the prototype more coherent and allow the most important strategic and systems decisions to be demonstrated in a practical form.
