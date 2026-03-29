@@ -294,3 +294,21 @@ Security is a major issue for VitalQuest because the business manages account da
 Compared with traditional on-premises infrastructure, the AWS solution offers clear advantages. It is faster to deploy, easier to scale, and more appropriate for a business with uncertain growth. VitalQuest would avoid the cost and complexity of purchasing servers, maintaining hardware, managing physical security, and planning for peak capacity long before it is needed. Public cloud also supports resilience through managed backups and service availability features.
 
 However, the cloud approach also has disadvantages. The business becomes dependent on an external provider and must manage ongoing operational cost rather than one-time hardware purchases. There is also less direct physical control over infrastructure. Despite these disadvantages, AWS is more suitable for VitalQuest than a traditional infrastructure model because the platform is digital-first, growth-oriented, data-driven, and likely to experience changing levels of demand over time. For this reason, a public-cloud PaaS-oriented deployment is the most practical and strategically relevant option for the business.
+
+# Appendix A: AI Use Declaration
+
+Signed statement:
+
+I confirm that I have not used AI to generate content that I am presenting as my own work, and I remain fully responsible for the ideas, analysis, and conclusions in this submission.
+
+GenAI tools used:
+
+- ChatGPT / Codex
+- Grammarly
+
+How each tool was used:
+
+- ChatGPT / Codex was used for implementation support, report structuring, drafting assistance, and wording refinement.
+- Grammarly was used for grammar checking, proofreading, and sentence clarity improvement.
+
+All AI-assisted outputs were reviewed, edited, and accepted by the student before inclusion in the final submission. Responsibility for the accuracy, originality, and academic integrity of the final coursework remains with the student.
