@@ -1,9 +1,10 @@
 import 'dotenv/config';
 import { v4 as uuidv4 } from 'uuid';
-import prisma from '../lib/prisma';
+import { getPrisma } from '../lib/prisma';
 
 async function testDatabase() {
     console.log('Testing Prisma PostgreSQL connection...\n');
+    const prisma = getPrisma();
 
     try {
         const userCount = await prisma.user.count();

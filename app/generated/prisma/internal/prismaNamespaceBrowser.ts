@@ -51,7 +51,17 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  UserProfile: 'UserProfile',
+  WearableConnection: 'WearableConnection',
+  UserQuest: 'UserQuest',
+  StoryChapterProgress: 'StoryChapterProgress',
+  Guild: 'Guild',
+  GuildMembership: 'GuildMembership',
+  CommunityPost: 'CommunityPost',
+  MetricSnapshot: 'MetricSnapshot',
+  AchievementProgress: 'AchievementProgress',
+  ReportExport: 'ReportExport'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -75,11 +85,183 @@ export const UserScalarFieldEnum = {
   email: 'email',
   clerkId: 'clerkId',
   name: 'name',
+  subscriptionTier: 'subscriptionTier',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  avatarName: 'avatarName',
+  archetype: 'archetype',
+  age: 'age',
+  weightKg: 'weightKg',
+  focusArea: 'focusArea',
+  primaryGoal: 'primaryGoal',
+  motivation: 'motivation',
+  level: 'level',
+  xp: 'xp',
+  coins: 'coins',
+  streakDays: 'streakDays',
+  wellbeingScore: 'wellbeingScore',
+  strength: 'strength',
+  mana: 'mana',
+  resilience: 'resilience',
+  sleepTarget: 'sleepTarget',
+  hydrationGoal: 'hydrationGoal',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserProfileScalarFieldEnum = (typeof UserProfileScalarFieldEnum)[keyof typeof UserProfileScalarFieldEnum]
+
+
+export const WearableConnectionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  provider: 'provider',
+  status: 'status',
+  lastSyncedAt: 'lastSyncedAt',
+  lastSyncSummary: 'lastSyncSummary',
+  steps: 'steps',
+  heartRate: 'heartRate',
+  sleepHours: 'sleepHours',
+  syncAccuracy: 'syncAccuracy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WearableConnectionScalarFieldEnum = (typeof WearableConnectionScalarFieldEnum)[keyof typeof WearableConnectionScalarFieldEnum]
+
+
+export const UserQuestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  category: 'category',
+  frequency: 'frequency',
+  narrative: 'narrative',
+  criteria: 'criteria',
+  verificationMode: 'verificationMode',
+  targetValue: 'targetValue',
+  currentValue: 'currentValue',
+  rewardXp: 'rewardXp',
+  rewardCoins: 'rewardCoins',
+  recommended: 'recommended',
+  status: 'status',
+  dueAt: 'dueAt',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserQuestScalarFieldEnum = (typeof UserQuestScalarFieldEnum)[keyof typeof UserQuestScalarFieldEnum]
+
+
+export const StoryChapterProgressScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  chapterKey: 'chapterKey',
+  title: 'title',
+  sceneLabel: 'sceneLabel',
+  summary: 'summary',
+  unlockHint: 'unlockHint',
+  rewardLabel: 'rewardLabel',
+  position: 'position',
+  status: 'status',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StoryChapterProgressScalarFieldEnum = (typeof StoryChapterProgressScalarFieldEnum)[keyof typeof StoryChapterProgressScalarFieldEnum]
+
+
+export const GuildScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  tagline: 'tagline',
+  description: 'description',
+  weeklyTargetXp: 'weeklyTargetXp',
+  memberCount: 'memberCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GuildScalarFieldEnum = (typeof GuildScalarFieldEnum)[keyof typeof GuildScalarFieldEnum]
+
+
+export const GuildMembershipScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  guildId: 'guildId',
+  role: 'role',
+  contributionXp: 'contributionXp',
+  joinedAt: 'joinedAt'
+} as const
+
+export type GuildMembershipScalarFieldEnum = (typeof GuildMembershipScalarFieldEnum)[keyof typeof GuildMembershipScalarFieldEnum]
+
+
+export const CommunityPostScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  guildId: 'guildId',
+  content: 'content',
+  likes: 'likes',
+  createdAt: 'createdAt'
+} as const
+
+export type CommunityPostScalarFieldEnum = (typeof CommunityPostScalarFieldEnum)[keyof typeof CommunityPostScalarFieldEnum]
+
+
+export const MetricSnapshotScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  capturedOn: 'capturedOn',
+  category: 'category',
+  steps: 'steps',
+  activeMinutes: 'activeMinutes',
+  mindfulnessMinutes: 'mindfulnessMinutes',
+  sleepHours: 'sleepHours',
+  hydrationLiters: 'hydrationLiters',
+  nutritionScore: 'nutritionScore',
+  moodScore: 'moodScore',
+  xpEarned: 'xpEarned'
+} as const
+
+export type MetricSnapshotScalarFieldEnum = (typeof MetricSnapshotScalarFieldEnum)[keyof typeof MetricSnapshotScalarFieldEnum]
+
+
+export const AchievementProgressScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  description: 'description',
+  icon: 'icon',
+  progress: 'progress',
+  target: 'target',
+  unlocked: 'unlocked',
+  unlockedAt: 'unlockedAt'
+} as const
+
+export type AchievementProgressScalarFieldEnum = (typeof AchievementProgressScalarFieldEnum)[keyof typeof AchievementProgressScalarFieldEnum]
+
+
+export const ReportExportScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  format: 'format',
+  timeframe: 'timeframe',
+  exportedAt: 'exportedAt'
+} as const
+
+export type ReportExportScalarFieldEnum = (typeof ReportExportScalarFieldEnum)[keyof typeof ReportExportScalarFieldEnum]
 
 
 export const SortOrder = {

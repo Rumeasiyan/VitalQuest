@@ -7,11 +7,232 @@ datasource db {
   provider = "postgresql"
 }
 
+enum SubscriptionTier {
+  FREE
+  PRO
+}
+
+enum WellbeingCategory {
+  FITNESS
+  NUTRITION
+  MINDFULNESS
+  RECOVERY
+}
+
+enum QuestFrequency {
+  DAILY
+  WEEKLY
+  SEASONAL
+}
+
+enum QuestStatus {
+  AVAILABLE
+  IN_PROGRESS
+  COMPLETED
+  PARTIAL
+}
+
+enum ConnectionProvider {
+  APPLE_HEALTH
+  GOOGLE_FIT
+  FITBIT
+  OURA
+}
+
+enum ConnectionStatus {
+  DISCONNECTED
+  CONNECTED
+  ERROR
+}
+
+enum StoryStatus {
+  LOCKED
+  AVAILABLE
+  COMPLETED
+}
+
+enum GuildRole {
+  MEMBER
+  CAPTAIN
+}
+
 model User {
+  id               Int                   @id @default(autoincrement())
+  email            String                @unique
+  clerkId          String                @unique
+  name             String?
+  subscriptionTier SubscriptionTier      @default(FREE)
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+  profile          UserProfile?
+  connections      WearableConnection[]
+  quests           UserQuest[]
+  storyChapters    StoryChapterProgress[]
+  guildMemberships GuildMembership[]
+  communityPosts   CommunityPost[]
+  metrics          MetricSnapshot[]
+  achievements     AchievementProgress[]
+  exports          ReportExport[]
+}
+
+model UserProfile {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @unique
+  avatarName     String   @default("Astra")
+  archetype      String   @default("Wayfinder")
+  age            Int?
+  weightKg       Int?
+  focusArea      String   @default("Balanced wellbeing")
+  primaryGoal    String   @default("Build consistent daily habits")
+  motivation     String   @default("Unlock the next story chapter")
+  level          Int      @default(1)
+  xp             Int      @default(180)
+  coins          Int      @default(90)
+  streakDays     Int      @default(4)
+  wellbeingScore Int      @default(78)
+  strength       Int      @default(12)
+  mana           Int      @default(15)
+  resilience     Int      @default(11)
+  sleepTarget    Float    @default(8)
+  hydrationGoal  Float    @default(2.5)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WearableConnection {
+  id              Int              @id @default(autoincrement())
+  userId          Int
+  provider        ConnectionProvider
+  status          ConnectionStatus @default(DISCONNECTED)
+  lastSyncedAt    DateTime?
+  lastSyncSummary String?
+  steps           Int              @default(0)
+  heartRate       Int              @default(0)
+  sleepHours      Float            @default(0)
+  syncAccuracy    Int              @default(98)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, provider])
+}
+
+model UserQuest {
+  id               Int               @id @default(autoincrement())
+  userId           Int
+  title            String
+  category         WellbeingCategory
+  frequency        QuestFrequency
+  narrative        String
+  criteria         String
+  verificationMode String
+  targetValue      Int
+  currentValue     Int               @default(0)
+  rewardXp         Int
+  rewardCoins      Int               @default(0)
+  recommended      Boolean           @default(false)
+  status           QuestStatus       @default(AVAILABLE)
+  dueAt            DateTime
+  completedAt      DateTime?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model StoryChapterProgress {
+  id             Int         @id @default(autoincrement())
+  userId         Int
+  chapterKey     String
+  title          String
+  sceneLabel     String
+  summary        String
+  unlockHint     String
+  rewardLabel    String
+  position       Int
+  status         StoryStatus @default(LOCKED)
+  completedAt    DateTime?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, chapterKey])
+}
+
+model Guild {
+  id             Int               @id @default(autoincrement())
+  slug           String            @unique
+  name           String
+  tagline        String
+  description    String
+  weeklyTargetXp Int               @default(1200)
+  memberCount    Int               @default(0)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  memberships    GuildMembership[]
+  posts          CommunityPost[]
+}
+
+model GuildMembership {
+  id             Int       @id @default(autoincrement())
+  userId         Int
+  guildId        Int
+  role           GuildRole @default(MEMBER)
+  contributionXp Int       @default(0)
+  joinedAt       DateTime  @default(now())
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guild          Guild     @relation(fields: [guildId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, guildId])
+}
+
+model CommunityPost {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
-  clerkId   String   @unique
-  name      String?
+  userId    Int
+  guildId   Int
+  content   String
+  likes     Int      @default(0)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guild     Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
+}
+
+model MetricSnapshot {
+  id                 Int               @id @default(autoincrement())
+  userId             Int
+  capturedOn         DateTime
+  category           WellbeingCategory
+  steps              Int               @default(0)
+  activeMinutes      Int               @default(0)
+  mindfulnessMinutes Int               @default(0)
+  sleepHours         Float             @default(0)
+  hydrationLiters    Float             @default(0)
+  nutritionScore     Int               @default(0)
+  moodScore          Int               @default(0)
+  xpEarned           Int               @default(0)
+  user               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AchievementProgress {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  title       String
+  description String
+  icon        String
+  progress    Int      @default(0)
+  target      Int      @default(100)
+  unlocked    Boolean  @default(false)
+  unlockedAt  DateTime?
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, title])
+}
+
+model ReportExport {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  format     String
+  timeframe  String
+  exportedAt DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

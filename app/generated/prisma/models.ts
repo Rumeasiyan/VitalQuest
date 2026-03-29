@@ -9,4 +9,14 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User'
+export type * from './models/UserProfile'
+export type * from './models/WearableConnection'
+export type * from './models/UserQuest'
+export type * from './models/StoryChapterProgress'
+export type * from './models/Guild'
+export type * from './models/GuildMembership'
+export type * from './models/CommunityPost'
+export type * from './models/MetricSnapshot'
+export type * from './models/AchievementProgress'
+export type * from './models/ReportExport'
 export type * from './commonInputTypes'

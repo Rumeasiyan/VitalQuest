@@ -1,5 +1,5 @@
 import { currentUser } from '@clerk/nextjs/server';
-import prisma from '@/lib/prisma';
+import { getPrisma } from '@/lib/prisma';
 
 export async function syncClerkUser() {
     const user = await currentUser();
@@ -19,7 +19,7 @@ export async function syncClerkUser() {
     const name =
         [user.firstName, user.lastName].filter(Boolean).join(' ') || null;
 
-    return prisma.user.upsert({
+    return getPrisma().user.upsert({
         where: { clerkId: user.id },
         update: {
             email,

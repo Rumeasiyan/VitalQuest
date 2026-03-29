@@ -39,6 +39,7 @@ export type UserMinAggregateOutputType = {
   email: string | null
   clerkId: string | null
   name: string | null
+  subscriptionTier: $Enums.SubscriptionTier | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -48,6 +49,7 @@ export type UserMaxAggregateOutputType = {
   email: string | null
   clerkId: string | null
   name: string | null
+  subscriptionTier: $Enums.SubscriptionTier | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -57,6 +59,7 @@ export type UserCountAggregateOutputType = {
   email: number
   clerkId: number
   name: number
+  subscriptionTier: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -76,6 +79,7 @@ export type UserMinAggregateInputType = {
   email?: true
   clerkId?: true
   name?: true
+  subscriptionTier?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -85,6 +89,7 @@ export type UserMaxAggregateInputType = {
   email?: true
   clerkId?: true
   name?: true
+  subscriptionTier?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -94,6 +99,7 @@ export type UserCountAggregateInputType = {
   email?: true
   clerkId?: true
   name?: true
+  subscriptionTier?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -190,6 +196,7 @@ export type UserGroupByOutputType = {
   email: string
   clerkId: string
   name: string | null
+  subscriptionTier: $Enums.SubscriptionTier
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -222,8 +229,18 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   clerkId?: Prisma.StringFilter<"User"> | string
   name?: Prisma.StringNullableFilter<"User"> | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFilter<"User"> | $Enums.SubscriptionTier
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  profile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
+  connections?: Prisma.WearableConnectionListRelationFilter
+  quests?: Prisma.UserQuestListRelationFilter
+  storyChapters?: Prisma.StoryChapterProgressListRelationFilter
+  guildMemberships?: Prisma.GuildMembershipListRelationFilter
+  communityPosts?: Prisma.CommunityPostListRelationFilter
+  metrics?: Prisma.MetricSnapshotListRelationFilter
+  achievements?: Prisma.AchievementProgressListRelationFilter
+  exports?: Prisma.ReportExportListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -231,8 +248,18 @@ export type UserOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
+  subscriptionTier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  profile?: Prisma.UserProfileOrderByWithRelationInput
+  connections?: Prisma.WearableConnectionOrderByRelationAggregateInput
+  quests?: Prisma.UserQuestOrderByRelationAggregateInput
+  storyChapters?: Prisma.StoryChapterProgressOrderByRelationAggregateInput
+  guildMemberships?: Prisma.GuildMembershipOrderByRelationAggregateInput
+  communityPosts?: Prisma.CommunityPostOrderByRelationAggregateInput
+  metrics?: Prisma.MetricSnapshotOrderByRelationAggregateInput
+  achievements?: Prisma.AchievementProgressOrderByRelationAggregateInput
+  exports?: Prisma.ReportExportOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -243,8 +270,18 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringNullableFilter<"User"> | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFilter<"User"> | $Enums.SubscriptionTier
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  profile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
+  connections?: Prisma.WearableConnectionListRelationFilter
+  quests?: Prisma.UserQuestListRelationFilter
+  storyChapters?: Prisma.StoryChapterProgressListRelationFilter
+  guildMemberships?: Prisma.GuildMembershipListRelationFilter
+  communityPosts?: Prisma.CommunityPostListRelationFilter
+  metrics?: Prisma.MetricSnapshotListRelationFilter
+  achievements?: Prisma.AchievementProgressListRelationFilter
+  exports?: Prisma.ReportExportListRelationFilter
 }, "id" | "email" | "clerkId">
 
 export type UserOrderByWithAggregationInput = {
@@ -252,6 +289,7 @@ export type UserOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
+  subscriptionTier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -269,6 +307,7 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   clerkId?: Prisma.StringWithAggregatesFilter<"User"> | string
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierWithAggregatesFilter<"User"> | $Enums.SubscriptionTier
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -277,8 +316,18 @@ export type UserCreateInput = {
   email: string
   clerkId: string
   name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
   createdAt?: Date | string
   updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -286,16 +335,36 @@ export type UserUncheckedCreateInput = {
   email: string
   clerkId: string
   name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
   createdAt?: Date | string
   updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -303,8 +372,18 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -312,6 +391,7 @@ export type UserCreateManyInput = {
   email: string
   clerkId: string
   name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -320,6 +400,7 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -329,6 +410,7 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -338,6 +420,7 @@ export type UserCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  subscriptionTier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -351,6 +434,7 @@ export type UserMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  subscriptionTier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -360,6 +444,7 @@ export type UserMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  subscriptionTier?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -368,12 +453,21 @@ export type UserSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type EnumSubscriptionTierFieldUpdateOperationsInput = {
+  set?: $Enums.SubscriptionTier
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -388,6 +482,998 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type UserCreateNestedOneWithoutProfileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProfileInput
+  upsert?: Prisma.UserUpsertWithoutProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProfileInput, Prisma.UserUpdateWithoutProfileInput>, Prisma.UserUncheckedUpdateWithoutProfileInput>
+}
+
+export type UserCreateNestedOneWithoutConnectionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutConnectionsInput, Prisma.UserUncheckedCreateWithoutConnectionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutConnectionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutConnectionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutConnectionsInput, Prisma.UserUncheckedCreateWithoutConnectionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutConnectionsInput
+  upsert?: Prisma.UserUpsertWithoutConnectionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutConnectionsInput, Prisma.UserUpdateWithoutConnectionsInput>, Prisma.UserUncheckedUpdateWithoutConnectionsInput>
+}
+
+export type UserCreateNestedOneWithoutQuestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutQuestsInput, Prisma.UserUncheckedCreateWithoutQuestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutQuestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutQuestsInput, Prisma.UserUncheckedCreateWithoutQuestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutQuestsInput
+  upsert?: Prisma.UserUpsertWithoutQuestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutQuestsInput, Prisma.UserUpdateWithoutQuestsInput>, Prisma.UserUncheckedUpdateWithoutQuestsInput>
+}
+
+export type UserCreateNestedOneWithoutStoryChaptersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutStoryChaptersInput, Prisma.UserUncheckedCreateWithoutStoryChaptersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutStoryChaptersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutStoryChaptersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutStoryChaptersInput, Prisma.UserUncheckedCreateWithoutStoryChaptersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutStoryChaptersInput
+  upsert?: Prisma.UserUpsertWithoutStoryChaptersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutStoryChaptersInput, Prisma.UserUpdateWithoutStoryChaptersInput>, Prisma.UserUncheckedUpdateWithoutStoryChaptersInput>
+}
+
+export type UserCreateNestedOneWithoutGuildMembershipsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGuildMembershipsInput, Prisma.UserUncheckedCreateWithoutGuildMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGuildMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutGuildMembershipsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutGuildMembershipsInput, Prisma.UserUncheckedCreateWithoutGuildMembershipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutGuildMembershipsInput
+  upsert?: Prisma.UserUpsertWithoutGuildMembershipsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutGuildMembershipsInput, Prisma.UserUpdateWithoutGuildMembershipsInput>, Prisma.UserUncheckedUpdateWithoutGuildMembershipsInput>
+}
+
+export type UserCreateNestedOneWithoutCommunityPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCommunityPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommunityPostsInput
+  upsert?: Prisma.UserUpsertWithoutCommunityPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCommunityPostsInput, Prisma.UserUpdateWithoutCommunityPostsInput>, Prisma.UserUncheckedUpdateWithoutCommunityPostsInput>
+}
+
+export type UserCreateNestedOneWithoutMetricsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMetricsInput, Prisma.UserUncheckedCreateWithoutMetricsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMetricsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutMetricsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMetricsInput, Prisma.UserUncheckedCreateWithoutMetricsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMetricsInput
+  upsert?: Prisma.UserUpsertWithoutMetricsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMetricsInput, Prisma.UserUpdateWithoutMetricsInput>, Prisma.UserUncheckedUpdateWithoutMetricsInput>
+}
+
+export type UserCreateNestedOneWithoutAchievementsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAchievementsInput, Prisma.UserUncheckedCreateWithoutAchievementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAchievementsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAchievementsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAchievementsInput, Prisma.UserUncheckedCreateWithoutAchievementsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAchievementsInput
+  upsert?: Prisma.UserUpsertWithoutAchievementsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAchievementsInput, Prisma.UserUpdateWithoutAchievementsInput>, Prisma.UserUncheckedUpdateWithoutAchievementsInput>
+}
+
+export type UserCreateNestedOneWithoutExportsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutExportsInput, Prisma.UserUncheckedCreateWithoutExportsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutExportsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutExportsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutExportsInput, Prisma.UserUncheckedCreateWithoutExportsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutExportsInput
+  upsert?: Prisma.UserUpsertWithoutExportsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutExportsInput, Prisma.UserUpdateWithoutExportsInput>, Prisma.UserUncheckedUpdateWithoutExportsInput>
+}
+
+export type UserCreateWithoutProfileInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutProfileInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutProfileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+}
+
+export type UserUpsertWithoutProfileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutProfileInput, Prisma.UserUncheckedUpdateWithoutProfileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutProfileInput, Prisma.UserUncheckedCreateWithoutProfileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutProfileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutProfileInput, Prisma.UserUncheckedUpdateWithoutProfileInput>
+}
+
+export type UserUpdateWithoutProfileInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutProfileInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutConnectionsInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutConnectionsInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutConnectionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutConnectionsInput, Prisma.UserUncheckedCreateWithoutConnectionsInput>
+}
+
+export type UserUpsertWithoutConnectionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutConnectionsInput, Prisma.UserUncheckedUpdateWithoutConnectionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutConnectionsInput, Prisma.UserUncheckedCreateWithoutConnectionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutConnectionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutConnectionsInput, Prisma.UserUncheckedUpdateWithoutConnectionsInput>
+}
+
+export type UserUpdateWithoutConnectionsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutConnectionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutQuestsInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutQuestsInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutQuestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutQuestsInput, Prisma.UserUncheckedCreateWithoutQuestsInput>
+}
+
+export type UserUpsertWithoutQuestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutQuestsInput, Prisma.UserUncheckedUpdateWithoutQuestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutQuestsInput, Prisma.UserUncheckedCreateWithoutQuestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutQuestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutQuestsInput, Prisma.UserUncheckedUpdateWithoutQuestsInput>
+}
+
+export type UserUpdateWithoutQuestsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutQuestsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutStoryChaptersInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutStoryChaptersInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutStoryChaptersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutStoryChaptersInput, Prisma.UserUncheckedCreateWithoutStoryChaptersInput>
+}
+
+export type UserUpsertWithoutStoryChaptersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutStoryChaptersInput, Prisma.UserUncheckedUpdateWithoutStoryChaptersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutStoryChaptersInput, Prisma.UserUncheckedCreateWithoutStoryChaptersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutStoryChaptersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutStoryChaptersInput, Prisma.UserUncheckedUpdateWithoutStoryChaptersInput>
+}
+
+export type UserUpdateWithoutStoryChaptersInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutStoryChaptersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutGuildMembershipsInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutGuildMembershipsInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutGuildMembershipsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutGuildMembershipsInput, Prisma.UserUncheckedCreateWithoutGuildMembershipsInput>
+}
+
+export type UserUpsertWithoutGuildMembershipsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutGuildMembershipsInput, Prisma.UserUncheckedUpdateWithoutGuildMembershipsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutGuildMembershipsInput, Prisma.UserUncheckedCreateWithoutGuildMembershipsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutGuildMembershipsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutGuildMembershipsInput, Prisma.UserUncheckedUpdateWithoutGuildMembershipsInput>
+}
+
+export type UserUpdateWithoutGuildMembershipsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutGuildMembershipsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCommunityPostsInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCommunityPostsInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCommunityPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+}
+
+export type UserUpsertWithoutCommunityPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCommunityPostsInput, Prisma.UserUncheckedUpdateWithoutCommunityPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCommunityPostsInput, Prisma.UserUncheckedCreateWithoutCommunityPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCommunityPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCommunityPostsInput, Prisma.UserUncheckedUpdateWithoutCommunityPostsInput>
+}
+
+export type UserUpdateWithoutCommunityPostsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCommunityPostsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutMetricsInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutMetricsInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutMetricsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutMetricsInput, Prisma.UserUncheckedCreateWithoutMetricsInput>
+}
+
+export type UserUpsertWithoutMetricsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMetricsInput, Prisma.UserUncheckedUpdateWithoutMetricsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMetricsInput, Prisma.UserUncheckedCreateWithoutMetricsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutMetricsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMetricsInput, Prisma.UserUncheckedUpdateWithoutMetricsInput>
+}
+
+export type UserUpdateWithoutMetricsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutMetricsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutAchievementsInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutAchievementsInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  exports?: Prisma.ReportExportUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutAchievementsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAchievementsInput, Prisma.UserUncheckedCreateWithoutAchievementsInput>
+}
+
+export type UserUpsertWithoutAchievementsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAchievementsInput, Prisma.UserUncheckedUpdateWithoutAchievementsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAchievementsInput, Prisma.UserUncheckedCreateWithoutAchievementsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAchievementsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAchievementsInput, Prisma.UserUncheckedUpdateWithoutAchievementsInput>
+}
+
+export type UserUpdateWithoutAchievementsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAchievementsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  exports?: Prisma.ReportExportUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutExportsInput = {
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutExportsInput = {
+  id?: number
+  email: string
+  clerkId: string
+  name?: string | null
+  subscriptionTier?: $Enums.SubscriptionTier
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  connections?: Prisma.WearableConnectionUncheckedCreateNestedManyWithoutUserInput
+  quests?: Prisma.UserQuestUncheckedCreateNestedManyWithoutUserInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedCreateNestedManyWithoutUserInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedCreateNestedManyWithoutUserInput
+  communityPosts?: Prisma.CommunityPostUncheckedCreateNestedManyWithoutUserInput
+  metrics?: Prisma.MetricSnapshotUncheckedCreateNestedManyWithoutUserInput
+  achievements?: Prisma.AchievementProgressUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutExportsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutExportsInput, Prisma.UserUncheckedCreateWithoutExportsInput>
+}
+
+export type UserUpsertWithoutExportsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutExportsInput, Prisma.UserUncheckedUpdateWithoutExportsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutExportsInput, Prisma.UserUncheckedCreateWithoutExportsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutExportsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutExportsInput, Prisma.UserUncheckedUpdateWithoutExportsInput>
+}
+
+export type UserUpdateWithoutExportsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutExportsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  clerkId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subscriptionTier?: Prisma.EnumSubscriptionTierFieldUpdateOperationsInput | $Enums.SubscriptionTier
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  connections?: Prisma.WearableConnectionUncheckedUpdateManyWithoutUserNestedInput
+  quests?: Prisma.UserQuestUncheckedUpdateManyWithoutUserNestedInput
+  storyChapters?: Prisma.StoryChapterProgressUncheckedUpdateManyWithoutUserNestedInput
+  guildMemberships?: Prisma.GuildMembershipUncheckedUpdateManyWithoutUserNestedInput
+  communityPosts?: Prisma.CommunityPostUncheckedUpdateManyWithoutUserNestedInput
+  metrics?: Prisma.MetricSnapshotUncheckedUpdateManyWithoutUserNestedInput
+  achievements?: Prisma.AchievementProgressUncheckedUpdateManyWithoutUserNestedInput
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  connections: number
+  quests: number
+  storyChapters: number
+  guildMemberships: number
+  communityPosts: number
+  metrics: number
+  achievements: number
+  exports: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  connections?: boolean | UserCountOutputTypeCountConnectionsArgs
+  quests?: boolean | UserCountOutputTypeCountQuestsArgs
+  storyChapters?: boolean | UserCountOutputTypeCountStoryChaptersArgs
+  guildMemberships?: boolean | UserCountOutputTypeCountGuildMembershipsArgs
+  communityPosts?: boolean | UserCountOutputTypeCountCommunityPostsArgs
+  metrics?: boolean | UserCountOutputTypeCountMetricsArgs
+  achievements?: boolean | UserCountOutputTypeCountAchievementsArgs
+  exports?: boolean | UserCountOutputTypeCountExportsArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountConnectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WearableConnectionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountQuestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserQuestWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountStoryChaptersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StoryChapterProgressWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountGuildMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GuildMembershipWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommunityPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CommunityPostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountMetricsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MetricSnapshotWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountAchievementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AchievementProgressWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountExportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReportExportWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -395,8 +1481,19 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   email?: boolean
   clerkId?: boolean
   name?: boolean
+  subscriptionTier?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  connections?: boolean | Prisma.User$connectionsArgs<ExtArgs>
+  quests?: boolean | Prisma.User$questsArgs<ExtArgs>
+  storyChapters?: boolean | Prisma.User$storyChaptersArgs<ExtArgs>
+  guildMemberships?: boolean | Prisma.User$guildMembershipsArgs<ExtArgs>
+  communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
+  metrics?: boolean | Prisma.User$metricsArgs<ExtArgs>
+  achievements?: boolean | Prisma.User$achievementsArgs<ExtArgs>
+  exports?: boolean | Prisma.User$exportsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -404,6 +1501,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   clerkId?: boolean
   name?: boolean
+  subscriptionTier?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -413,6 +1511,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   email?: boolean
   clerkId?: boolean
   name?: boolean
+  subscriptionTier?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -422,20 +1521,46 @@ export type UserSelectScalar = {
   email?: boolean
   clerkId?: boolean
   name?: boolean
+  subscriptionTier?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "clerkId" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "clerkId" | "name" | "subscriptionTier" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  connections?: boolean | Prisma.User$connectionsArgs<ExtArgs>
+  quests?: boolean | Prisma.User$questsArgs<ExtArgs>
+  storyChapters?: boolean | Prisma.User$storyChaptersArgs<ExtArgs>
+  guildMemberships?: boolean | Prisma.User$guildMembershipsArgs<ExtArgs>
+  communityPosts?: boolean | Prisma.User$communityPostsArgs<ExtArgs>
+  metrics?: boolean | Prisma.User$metricsArgs<ExtArgs>
+  achievements?: boolean | Prisma.User$achievementsArgs<ExtArgs>
+  exports?: boolean | Prisma.User$exportsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    profile: Prisma.$UserProfilePayload<ExtArgs> | null
+    connections: Prisma.$WearableConnectionPayload<ExtArgs>[]
+    quests: Prisma.$UserQuestPayload<ExtArgs>[]
+    storyChapters: Prisma.$StoryChapterProgressPayload<ExtArgs>[]
+    guildMemberships: Prisma.$GuildMembershipPayload<ExtArgs>[]
+    communityPosts: Prisma.$CommunityPostPayload<ExtArgs>[]
+    metrics: Prisma.$MetricSnapshotPayload<ExtArgs>[]
+    achievements: Prisma.$AchievementProgressPayload<ExtArgs>[]
+    exports: Prisma.$ReportExportPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     email: string
     clerkId: string
     name: string | null
+    subscriptionTier: $Enums.SubscriptionTier
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -832,6 +1957,15 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  profile<T extends Prisma.User$profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$profileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  connections<T extends Prisma.User$connectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$connectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WearableConnectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  quests<T extends Prisma.User$questsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$questsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserQuestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  storyChapters<T extends Prisma.User$storyChaptersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$storyChaptersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StoryChapterProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  guildMemberships<T extends Prisma.User$guildMembershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$guildMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuildMembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  communityPosts<T extends Prisma.User$communityPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$communityPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommunityPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  metrics<T extends Prisma.User$metricsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$metricsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MetricSnapshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  achievements<T extends Prisma.User$achievementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$achievementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AchievementProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  exports<T extends Prisma.User$exportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$exportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportExportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -865,6 +1999,7 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly clerkId: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
+  readonly subscriptionTier: Prisma.FieldRef<"User", 'SubscriptionTier'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -884,6 +2019,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -902,6 +2041,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -919,6 +2062,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -968,6 +2115,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1015,6 +2166,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which Users to fetch.
    */
@@ -1064,6 +2219,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The data needed to create a User.
    */
   data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
@@ -1111,6 +2270,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1178,6 +2341,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1204,6 +2371,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1224,6 +2395,217 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.profile
+ */
+export type User$profileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserProfile
+   */
+  select?: Prisma.UserProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserProfile
+   */
+  omit?: Prisma.UserProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserProfileInclude<ExtArgs> | null
+  where?: Prisma.UserProfileWhereInput
+}
+
+/**
+ * User.connections
+ */
+export type User$connectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WearableConnection
+   */
+  select?: Prisma.WearableConnectionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WearableConnection
+   */
+  omit?: Prisma.WearableConnectionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WearableConnectionInclude<ExtArgs> | null
+  where?: Prisma.WearableConnectionWhereInput
+  orderBy?: Prisma.WearableConnectionOrderByWithRelationInput | Prisma.WearableConnectionOrderByWithRelationInput[]
+  cursor?: Prisma.WearableConnectionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WearableConnectionScalarFieldEnum | Prisma.WearableConnectionScalarFieldEnum[]
+}
+
+/**
+ * User.quests
+ */
+export type User$questsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserQuest
+   */
+  select?: Prisma.UserQuestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserQuest
+   */
+  omit?: Prisma.UserQuestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserQuestInclude<ExtArgs> | null
+  where?: Prisma.UserQuestWhereInput
+  orderBy?: Prisma.UserQuestOrderByWithRelationInput | Prisma.UserQuestOrderByWithRelationInput[]
+  cursor?: Prisma.UserQuestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserQuestScalarFieldEnum | Prisma.UserQuestScalarFieldEnum[]
+}
+
+/**
+ * User.storyChapters
+ */
+export type User$storyChaptersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StoryChapterProgress
+   */
+  select?: Prisma.StoryChapterProgressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StoryChapterProgress
+   */
+  omit?: Prisma.StoryChapterProgressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StoryChapterProgressInclude<ExtArgs> | null
+  where?: Prisma.StoryChapterProgressWhereInput
+  orderBy?: Prisma.StoryChapterProgressOrderByWithRelationInput | Prisma.StoryChapterProgressOrderByWithRelationInput[]
+  cursor?: Prisma.StoryChapterProgressWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StoryChapterProgressScalarFieldEnum | Prisma.StoryChapterProgressScalarFieldEnum[]
+}
+
+/**
+ * User.guildMemberships
+ */
+export type User$guildMembershipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GuildMembership
+   */
+  select?: Prisma.GuildMembershipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GuildMembership
+   */
+  omit?: Prisma.GuildMembershipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GuildMembershipInclude<ExtArgs> | null
+  where?: Prisma.GuildMembershipWhereInput
+  orderBy?: Prisma.GuildMembershipOrderByWithRelationInput | Prisma.GuildMembershipOrderByWithRelationInput[]
+  cursor?: Prisma.GuildMembershipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GuildMembershipScalarFieldEnum | Prisma.GuildMembershipScalarFieldEnum[]
+}
+
+/**
+ * User.communityPosts
+ */
+export type User$communityPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommunityPost
+   */
+  select?: Prisma.CommunityPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CommunityPost
+   */
+  omit?: Prisma.CommunityPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommunityPostInclude<ExtArgs> | null
+  where?: Prisma.CommunityPostWhereInput
+  orderBy?: Prisma.CommunityPostOrderByWithRelationInput | Prisma.CommunityPostOrderByWithRelationInput[]
+  cursor?: Prisma.CommunityPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunityPostScalarFieldEnum | Prisma.CommunityPostScalarFieldEnum[]
+}
+
+/**
+ * User.metrics
+ */
+export type User$metricsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the MetricSnapshot
+   */
+  select?: Prisma.MetricSnapshotSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the MetricSnapshot
+   */
+  omit?: Prisma.MetricSnapshotOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MetricSnapshotInclude<ExtArgs> | null
+  where?: Prisma.MetricSnapshotWhereInput
+  orderBy?: Prisma.MetricSnapshotOrderByWithRelationInput | Prisma.MetricSnapshotOrderByWithRelationInput[]
+  cursor?: Prisma.MetricSnapshotWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MetricSnapshotScalarFieldEnum | Prisma.MetricSnapshotScalarFieldEnum[]
+}
+
+/**
+ * User.achievements
+ */
+export type User$achievementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AchievementProgress
+   */
+  select?: Prisma.AchievementProgressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AchievementProgress
+   */
+  omit?: Prisma.AchievementProgressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AchievementProgressInclude<ExtArgs> | null
+  where?: Prisma.AchievementProgressWhereInput
+  orderBy?: Prisma.AchievementProgressOrderByWithRelationInput | Prisma.AchievementProgressOrderByWithRelationInput[]
+  cursor?: Prisma.AchievementProgressWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AchievementProgressScalarFieldEnum | Prisma.AchievementProgressScalarFieldEnum[]
+}
+
+/**
+ * User.exports
+ */
+export type User$exportsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ReportExport
+   */
+  select?: Prisma.ReportExportSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ReportExport
+   */
+  omit?: Prisma.ReportExportOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReportExportInclude<ExtArgs> | null
+  where?: Prisma.ReportExportWhereInput
+  orderBy?: Prisma.ReportExportOrderByWithRelationInput | Prisma.ReportExportOrderByWithRelationInput[]
+  cursor?: Prisma.ReportExportWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReportExportScalarFieldEnum | Prisma.ReportExportScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1235,4 +2617,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }

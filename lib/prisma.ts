@@ -1,20 +1,34 @@
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../app/generated/prisma/client';
 
-const adapter = new PrismaPg({
-    connectionString: process.env.DATABASE_URL!,
-});
+type PrismaGlobal = {
+    prisma?: PrismaClient;
+};
 
-const globalForPrisma = global as unknown as { prisma: PrismaClient };
+const globalForPrisma = global as unknown as PrismaGlobal;
 
-const prisma =
-    globalForPrisma.prisma ||
-    new PrismaClient({
-        adapter,
+function createPrismaClient() {
+    const connectionString = process.env.DATABASE_URL;
+
+    if (!connectionString) {
+        throw new Error(
+            'DATABASE_URL is required to use VitalQuest data features.',
+        );
+    }
+
+    const adapter = new PrismaPg({
+        connectionString,
     });
 
-if (process.env.NODE_ENV !== 'production') {
-    globalForPrisma.prisma = prisma;
+    return new PrismaClient({
+        adapter,
+    });
 }
 
-export default prisma;
+export function getPrisma() {
+    if (!globalForPrisma.prisma) {
+        globalForPrisma.prisma = createPrismaClient();
+    }
+
+    return globalForPrisma.prisma;
+}

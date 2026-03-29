@@ -22,3 +22,53 @@ export * from './enums';
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model UserProfile
+ * 
+ */
+export type UserProfile = Prisma.UserProfileModel
+/**
+ * Model WearableConnection
+ * 
+ */
+export type WearableConnection = Prisma.WearableConnectionModel
+/**
+ * Model UserQuest
+ * 
+ */
+export type UserQuest = Prisma.UserQuestModel
+/**
+ * Model StoryChapterProgress
+ * 
+ */
+export type StoryChapterProgress = Prisma.StoryChapterProgressModel
+/**
+ * Model Guild
+ * 
+ */
+export type Guild = Prisma.GuildModel
+/**
+ * Model GuildMembership
+ * 
+ */
+export type GuildMembership = Prisma.GuildMembershipModel
+/**
+ * Model CommunityPost
+ * 
+ */
+export type CommunityPost = Prisma.CommunityPostModel
+/**
+ * Model MetricSnapshot
+ * 
+ */
+export type MetricSnapshot = Prisma.MetricSnapshotModel
+/**
+ * Model AchievementProgress
+ * 
+ */
+export type AchievementProgress = Prisma.AchievementProgressModel
+/**
+ * Model ReportExport
+ * 
+ */
+export type ReportExport = Prisma.ReportExportModel

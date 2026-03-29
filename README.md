@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VitalQuest
 
-## Getting Started
+VitalQuest is a gamified wellness platform built with Next.js 16, Clerk, Prisma, and PostgreSQL. It implements the coursework and PRD scope as a deployable MVP with:
 
-First, run the development server:
+- a public landing page
+- Clerk-based authentication
+- protected dashboard flows
+- profile setup
+- Bio-Sync wearable connection simulation
+- quests and rewards
+- story progression
+- guild/community features
+- analytics and export routes
+- free/pro plan switching
+
+## Stack
+
+- Next.js 16.2.0 App Router
+- React 19
+- Clerk for authentication
+- Prisma 7 with PostgreSQL
+- Tailwind CSS 4
+
+## Required environment variables
+
+Copy `.env.example` to `.env` and set:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+DATABASE_URL="postgresql://USERNAME:PASSWORD@HOST:5432/DB_NAME"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""
+CLERK_SECRET_KEY=""
+NEXT_PUBLIC_THEME_MODE=light
+NEXT_PUBLIC_ENABLE_THEME_TOGGLE=true
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Notes:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `DATABASE_URL` is required for all signed-in product features.
+- Clerk can run in keyless development mode locally if you leave the Clerk keys empty.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Local development
 
-## Learn More
+```bash
+npm install
+npm run db:generate
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+If you want the schema applied to a local database:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run db:push
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Validation
 
-## Deploy on Vercel
+```bash
+npm run lint
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Product routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` marketing landing page
+- `/sign-in`
+- `/sign-up`
+- `/dashboard`
+- `/quests`
+- `/bio-sync`
+- `/story`
+- `/community`
+- `/analytics`
+- `/profile`
+- `/pricing`
+- `/api/export`
+
+## Data model highlights
+
+The Prisma schema includes:
+
+- `User`
+- `UserProfile`
+- `WearableConnection`
+- `UserQuest`
+- `StoryChapterProgress`
+- `Guild`
+- `GuildMembership`
+- `CommunityPost`
+- `MetricSnapshot`
+- `AchievementProgress`
+- `ReportExport`
+
+On first authenticated access, the app seeds a realistic demo workspace for that user so the platform is immediately usable.

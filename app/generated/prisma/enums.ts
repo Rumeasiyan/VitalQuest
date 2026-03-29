@@ -9,7 +9,74 @@
 * 🟢 You can import this file directly.
 */
 
+export const SubscriptionTier = {
+  FREE: 'FREE',
+  PRO: 'PRO'
+} as const
+
+export type SubscriptionTier = (typeof SubscriptionTier)[keyof typeof SubscriptionTier]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const WellbeingCategory = {
+  FITNESS: 'FITNESS',
+  NUTRITION: 'NUTRITION',
+  MINDFULNESS: 'MINDFULNESS',
+  RECOVERY: 'RECOVERY'
+} as const
+
+export type WellbeingCategory = (typeof WellbeingCategory)[keyof typeof WellbeingCategory]
+
+
+export const QuestFrequency = {
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  SEASONAL: 'SEASONAL'
+} as const
+
+export type QuestFrequency = (typeof QuestFrequency)[keyof typeof QuestFrequency]
+
+
+export const QuestStatus = {
+  AVAILABLE: 'AVAILABLE',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  PARTIAL: 'PARTIAL'
+} as const
+
+export type QuestStatus = (typeof QuestStatus)[keyof typeof QuestStatus]
+
+
+export const ConnectionProvider = {
+  APPLE_HEALTH: 'APPLE_HEALTH',
+  GOOGLE_FIT: 'GOOGLE_FIT',
+  FITBIT: 'FITBIT',
+  OURA: 'OURA'
+} as const
+
+export type ConnectionProvider = (typeof ConnectionProvider)[keyof typeof ConnectionProvider]
+
+
+export const ConnectionStatus = {
+  DISCONNECTED: 'DISCONNECTED',
+  CONNECTED: 'CONNECTED',
+  ERROR: 'ERROR'
+} as const
+
+export type ConnectionStatus = (typeof ConnectionStatus)[keyof typeof ConnectionStatus]
+
+
+export const StoryStatus = {
+  LOCKED: 'LOCKED',
+  AVAILABLE: 'AVAILABLE',
+  COMPLETED: 'COMPLETED'
+} as const
+
+export type StoryStatus = (typeof StoryStatus)[keyof typeof StoryStatus]
+
+
+export const GuildRole = {
+  MEMBER: 'MEMBER',
+  CAPTAIN: 'CAPTAIN'
+} as const
+
+export type GuildRole = (typeof GuildRole)[keyof typeof GuildRole]
