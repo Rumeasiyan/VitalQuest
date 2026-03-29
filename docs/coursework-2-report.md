@@ -122,3 +122,27 @@ The main dashboard presents the overall command view of the user’s account. It
 The Today View is a simplified daily planning page. It breaks the day into morning, afternoon, and evening blocks and assigns a clear focus to each period. This gives the user a calmer summary of what should be completed today, especially for recovery, quest completion, and mindfulness-related actions.
 
 ![Figure 2.5: Today view of the VitalQuest prototype](./image/05-dashbaord-today.png)
+
+## 2.3 Quests and Progression
+
+The quests section translates health-related actions into structured platform goals. Quests include narrative context, completion criteria, progress indicators, and reward values such as experience points and coins. This makes the system feel closer to a game progression loop than a simple checklist.
+
+The main quests page groups missions into daily, weekly, and seasonal categories. Each quest card shows status, category, progress, verification method, and the action needed to complete it. This allows the user to understand not only what must be done, but also how it will be rewarded and verified.
+
+### 2.3.1 Quest Board
+
+The quest board is the central overview page for all missions. It gives the user a structured summary of active quests and shows how short-term and longer-term objectives fit into the wider progression system.
+
+![Figure 2.6: Quest board of the VitalQuest prototype](./image/06-quests.png)
+
+### 2.3.2 Daily Quests
+
+The daily quests page focuses on repeatable tasks that support habit formation. It presents a simpler list of daily objectives and gives the user a direct completion action for each quest.
+
+![Figure 2.7: Daily quests page of the VitalQuest prototype](./image/07-quests-daily.png)
+
+### 2.3.3 Weekly Quests
+
+The weekly quests page highlights longer progression arcs. These quests are intended to reinforce consistency over time rather than single-day actions, and they connect the user’s effort to larger rewards and narrative movement.
+
+![Figure 2.8: Weekly quests page of the VitalQuest prototype](./image/08-quests-weekly.png)
