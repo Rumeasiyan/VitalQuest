@@ -266,3 +266,33 @@ The functional requirements and use cases were also reflected in the prototype. 
 ## 3.6 Changes Made from Coursework 1 and Their Rationale
 
 Some changes were necessary when moving from concept to prototype. First, AI-driven personalisation, moderation workflows, and in-app support were not implemented in full, because the prototype needed to prioritise the clearest user-facing features within limited time. Second, the social features were implemented as focused guild, feed, and leaderboard pages rather than a larger open community ecosystem. This was more suitable for demonstrating the idea clearly. Third, the prototype placed strong emphasis on dashboard, Bio-Sync, quests, and reports because these pages best show the uniqueness of VitalQuest. These adjustments do not weaken the original concept. Instead, they make the prototype more coherent and allow the most important strategic and systems decisions to be demonstrated in a practical form.
+
+# Chapter 4: Task 3 - Cloud Computing Evaluation
+
+Chapter 4 evaluates a concrete cloud solution for VitalQuest. The most suitable choice is a public-cloud deployment on Amazon Web Services (AWS), using AWS App Runner for the web application, Amazon RDS for PostgreSQL, Amazon S3 for exported reports and static assets, and Amazon CloudWatch for monitoring. This is appropriate because VitalQuest is an online service that depends on continuous availability, account-based access, secure storage of sensitive wellbeing-related data, and the ability to scale when user activity increases.
+
+## 4.1 Proposed Cloud Solution
+
+The proposed solution is an AWS-based deployment for the VitalQuest platform. The Next.js application would run on AWS App Runner, which is suitable for web applications that need managed deployment and scaling without full server administration. User and platform data would be stored in Amazon RDS for PostgreSQL. Exported PDF and CSV reports, image assets, and backup files could be stored in Amazon S3. Monitoring, logging, and alerting would be handled through Amazon CloudWatch.
+
+## 4.2 Cloud Service Model and Deployment Model
+
+This solution is mainly a Platform as a Service (PaaS) approach within a public cloud model. App Runner and RDS reduce the need to manually configure and maintain operating systems, patch servers, or manage database software at a low level. S3 is an Infrastructure as a Service style storage component, but from the business perspective the overall solution still behaves as a managed public-cloud platform. This is suitable for VitalQuest because the business requires speed, flexibility, and lower operational overhead during growth.
+
+## 4.3 Integration with VitalQuest Business Processes
+
+The AWS solution supports both technical implementation and business processes. The web application would deliver the dashboard, quests, Bio-Sync pages, analytics, and community areas. RDS would store user profiles, quests, wearable connection records, story progress, guild activity, and export history. S3 would support generated reports and other downloadable files. CloudWatch would allow the business to monitor failed syncs, unusual traffic spikes, or errors in report generation. This is especially relevant to VitalQuest because the service depends on trust, continuity, and reliable handling of user progress data.
+
+## 4.4 Cost Implications
+
+AWS offers a pay-as-you-go model, which is beneficial for a startup-style digital business. VitalQuest would not need to purchase physical servers, networking hardware, backup devices, or a dedicated data centre contract in advance. This reduces initial capital expenditure and allows costs to rise more gradually with real demand. However, cloud services can become expensive if usage is not monitored carefully. For VitalQuest, cost pressure could come from database growth, high traffic periods, report storage, and background processing for sync-heavy activity. Therefore, cost control policies, storage lifecycle rules, and monitoring would be necessary.
+
+## 4.5 Security and Privacy Implications
+
+Security is a major issue for VitalQuest because the business manages account data and health-related signals such as activity, sleep, and recovery metrics. AWS provides strong security capabilities, including encryption at rest, encrypted network traffic, access control through IAM policies, backup management, and monitoring through CloudWatch. These features would help VitalQuest protect sensitive records and maintain user trust. Even so, cloud adoption does not remove responsibility from the business. VitalQuest would still need careful access design, secure API connections, proper handling of exported reports, and privacy-aware data sharing rules for leaderboards and guild features.
+
+## 4.6 Critical Evaluation Against Traditional Infrastructure
+
+Compared with traditional on-premises infrastructure, the AWS solution offers clear advantages. It is faster to deploy, easier to scale, and more appropriate for a business with uncertain growth. VitalQuest would avoid the cost and complexity of purchasing servers, maintaining hardware, managing physical security, and planning for peak capacity long before it is needed. Public cloud also supports resilience through managed backups and service availability features.
+
+However, the cloud approach also has disadvantages. The business becomes dependent on an external provider and must manage ongoing operational cost rather than one-time hardware purchases. There is also less direct physical control over infrastructure. Despite these disadvantages, AWS is more suitable for VitalQuest than a traditional infrastructure model because the platform is digital-first, growth-oriented, data-driven, and likely to experience changing levels of demand over time. For this reason, a public-cloud PaaS-oriented deployment is the most practical and strategically relevant option for the business.
