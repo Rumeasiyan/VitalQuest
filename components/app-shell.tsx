@@ -34,7 +34,7 @@ export function AppShell({
 }: AppShellProps) {
     return (
         <div className="min-h-screen bg-background">
-            <div className="page-shell py-4 sm:py-6">
+            <div className="w-full px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
                 <div className="grid gap-4 lg:grid-cols-[280px_minmax(0,1fr)]">
                     <aside className="rounded-[32px] border border-sidebar-border bg-sidebar px-4 py-5 text-sidebar-foreground shadow-md sm:px-5 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto">
                         <div className="flex items-center justify-between gap-3">
