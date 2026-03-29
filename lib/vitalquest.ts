@@ -1,5 +1,6 @@
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
+import { cache } from 'react';
 import {
     ConnectionProvider,
     ConnectionStatus,
@@ -279,7 +280,7 @@ export async function syncUserIdentity(input: {
     });
 }
 
-export async function requireViewer() {
+const loadViewer = cache(async () => {
     const clerkUser = await currentUser();
 
     if (!clerkUser) {
@@ -353,6 +354,10 @@ export async function requireViewer() {
             },
         },
     });
+});
+
+export async function requireViewer() {
+    return loadViewer();
 }
 
 export async function getCommunityOverview() {
