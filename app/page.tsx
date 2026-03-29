@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { currentUser } from '@clerk/nextjs/server';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import {
     ArrowRight,
@@ -188,97 +189,16 @@ export default async function Home() {
                             </div>
                         </div>
 
-                        <div className="panel overflow-hidden border-white/10 bg-white/8 text-white shadow-lg backdrop-blur">
-                            <div className="grid gap-4 p-5 sm:p-6">
-                                <div className="rounded-[26px] bg-white/8 p-5">
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/55">
-                                                Bio-Sync overview
-                                            </p>
-                                            <h2 className="mt-3 text-3xl font-semibold">
-                                                8,420 verified steps
-                                            </h2>
-                                        </div>
-                                        <span className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground">
-                                            +120 XP
-                                        </span>
-                                    </div>
-                                    <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                                        <div className="rounded-2xl bg-white/10 p-4">
-                                            <p className="text-xs uppercase tracking-[0.24em] text-white/55">
-                                                Strength
-                                            </p>
-                                            <p className="mt-3 text-2xl font-semibold">
-                                                12
-                                            </p>
-                                        </div>
-                                        <div className="rounded-2xl bg-white/10 p-4">
-                                            <p className="text-xs uppercase tracking-[0.24em] text-white/55">
-                                                Mana
-                                            </p>
-                                            <p className="mt-3 text-2xl font-semibold">
-                                                15
-                                            </p>
-                                        </div>
-                                        <div className="rounded-2xl bg-white/10 p-4">
-                                            <p className="text-xs uppercase tracking-[0.24em] text-white/55">
-                                                Sleep
-                                            </p>
-                                            <p className="mt-3 text-2xl font-semibold">
-                                                7.6h
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-                                    <div className="rounded-[26px] bg-card p-5 text-card-foreground">
-                                        <p className="text-sm font-semibold">
-                                            Today&apos;s recommended quest
-                                        </p>
-                                        <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-                                            Forest Guardian Walk
-                                        </h3>
-                                        <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                                            Reach 8,000 verified steps to
-                                            relight the lower ridge trail and
-                                            open the next story checkpoint.
-                                        </p>
-                                        <div className="mt-5 h-3 rounded-full bg-muted">
-                                            <div className="h-full w-[72%] rounded-full bg-primary" />
-                                        </div>
-                                        <div className="mt-3 flex items-center justify-between text-sm text-muted-foreground">
-                                            <span>5,760 / 8,000</span>
-                                            <span>72%</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="rounded-[26px] bg-accent p-5 text-accent-foreground">
-                                        <p className="text-xs font-semibold uppercase tracking-[0.26em]">
-                                            Guild pulse
-                                        </p>
-                                        <h3 className="mt-3 text-2xl font-semibold">
-                                            Dawn Striders
-                                        </h3>
-                                        <p className="mt-3 text-sm leading-6">
-                                            18 members are currently pushing the
-                                            weekly harbor reset challenge.
-                                        </p>
-                                        <div className="mt-5 flex -space-x-2">
-                                            {[0, 1, 2, 3].map((avatar) => (
-                                                <span
-                                                    key={avatar}
-                                                    className="flex size-10 items-center justify-center rounded-full border border-primary bg-primary text-sm font-semibold text-primary-foreground"
-                                                >
-                                                    {String.fromCharCode(
-                                                        65 + avatar,
-                                                    )}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
+                        <div className="relative overflow-hidden rounded-[34px] border border-white/10 shadow-lg">
+                            <div className="relative aspect-[4/4.8] overflow-hidden sm:aspect-[4/4.2] lg:aspect-[4/4.9]">
+                                <Image
+                                    src="https://images.unsplash.com/photo-1762331660576-cbf66a7db84d?auto=format&fit=crop&fm=jpg&q=80&w=1600"
+                                    alt="Person outdoors checking a smartwatch during a wellness routine."
+                                    fill
+                                    sizes="(min-width: 1024px) 34rem, 100vw"
+                                    className="object-cover"
+                                    priority
+                                />
                             </div>
                         </div>
                     </div>
