@@ -293,7 +293,7 @@ export default async function DashboardPage() {
                             </div>
                             <MoonStar className="size-5 text-primary" />
                         </div>
-                        <div className="mt-5 rounded-[24px] bg-muted/55 p-5">
+                        <div className="mt-5 rounded-3xl bg-muted/55 p-5">
                             <p className="text-sm font-semibold text-muted-foreground">
                                 {
                                     viewer.storyChapters.find(

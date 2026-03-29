@@ -28,7 +28,7 @@ export default async function StoryPage() {
                             className="rounded-[28px] border bg-muted/45 p-5 sm:p-6"
                         >
                             <div className="grid gap-5 lg:grid-cols-[120px_minmax(0,1fr)_280px] lg:items-start">
-                                <div className="rounded-[24px] bg-card px-4 py-5 text-center">
+                                <div className="rounded-3xl bg-card px-4 py-5 text-center">
                                     <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                                         Chapter
                                     </p>
@@ -62,7 +62,7 @@ export default async function StoryPage() {
                                     </p>
                                 </div>
 
-                                <div className="rounded-[24px] bg-card p-5">
+                                <div className="rounded-3xl bg-card p-5">
                                     <BookMarked className="size-5 text-primary" />
                                     <p className="mt-4 text-xs uppercase tracking-[0.24em] text-muted-foreground">
                                         Unlock condition

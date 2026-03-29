@@ -94,7 +94,7 @@ export function AuthShell({ children, mode }: AuthShellProps) {
                     </section>
 
                     <section className="panel flex items-center justify-center p-5 sm:p-8">
-                        <div className="clerk-direct w-full max-w-[440px]">
+                        <div className="clerk-direct w-full max-w-110">
                             {children}
                         </div>
                     </section>

@@ -286,11 +286,11 @@ export default async function Home() {
                         </p>
                     </div>
 
-                    <div className="mt-10 grid gap-0 overflow-hidden rounded-[32px] border sm:grid-cols-2">
+                    <div className="mt-10 grid gap-0 overflow-hidden rounded-4xl border sm:grid-cols-2">
                         {capabilityCards.map(({ icon: Icon, title, copy }) => (
                             <article
                                 key={title}
-                                className="border-b p-6 last:border-b-0 sm:border-r sm:last:border-r-0 [&:nth-last-child(-n+2)]:sm:border-b-0"
+                                className="border-b p-6 last:border-b-0 sm:border-r sm:last:border-r-0 nth-last-[-n+2]:sm:border-b-0"
                             >
                                 <Icon className="size-6 text-primary" />
                                 <h3 className="mt-5 text-2xl font-semibold">

@@ -89,7 +89,7 @@ export default async function BioSyncPage() {
                                     </div>
                                 </div>
 
-                                <div className="rounded-[24px] bg-muted/55 p-5">
+                                <div className="rounded-3xl bg-muted/55 p-5">
                                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                                         Last sync
                                     </p>

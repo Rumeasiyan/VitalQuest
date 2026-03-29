@@ -138,7 +138,7 @@ export default async function CommunityPage() {
                             {recentPosts.map((post: CommunityPost) => (
                                 <article
                                     key={post.id}
-                                    className="rounded-[24px] border bg-card p-5"
+                                    className="rounded-3xl border bg-card p-5"
                                 >
                                     <div className="flex items-center justify-between gap-4">
                                         <div>

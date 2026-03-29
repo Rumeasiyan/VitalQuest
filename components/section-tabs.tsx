@@ -20,7 +20,7 @@ export function SectionTabs({ items, className }: SectionTabsProps) {
     return (
         <nav
             className={cn(
-                'flex flex-wrap gap-2 rounded-[24px] border bg-card p-2',
+                'flex flex-wrap gap-2 rounded-3xl border bg-card p-2',
                 className,
             )}
         >

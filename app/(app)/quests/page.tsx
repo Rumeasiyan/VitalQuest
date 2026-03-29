@@ -125,7 +125,7 @@ export default async function QuestsPage() {
                                                 </div>
                                             </div>
 
-                                            <div className="rounded-[24px] bg-card p-5">
+                                            <div className="rounded-3xl bg-card p-5">
                                                 <div className="flex items-center justify-between text-sm">
                                                     <span className="text-muted-foreground">
                                                         Progress

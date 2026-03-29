@@ -36,7 +36,7 @@ export function AppShell({
         <div className="min-h-screen bg-background">
             <div className="w-full px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
                 <div className="grid gap-4 lg:grid-cols-[280px_minmax(0,1fr)]">
-                    <aside className="rounded-[32px] border border-sidebar-border bg-sidebar px-4 py-5 text-sidebar-foreground shadow-md sm:px-5 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto">
+                    <aside className="rounded-4xl border border-sidebar-border bg-sidebar px-4 py-5 text-sidebar-foreground shadow-md sm:px-5 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto">
                         <div className="flex items-center justify-between gap-3">
                             <BrandLogo theme="dark" />
                             <div className="hidden lg:block">
@@ -112,7 +112,7 @@ export function AppShell({
                     </aside>
 
                     <main className="min-w-0">
-                        <header className="mb-4 flex flex-col gap-4 rounded-[32px] border bg-card px-4 py-4 shadow-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+                        <header className="mb-4 flex flex-col gap-4 rounded-4xl border bg-card px-4 py-4 shadow-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between">
                             <div>
                                 <p className="eyebrow">Balanced progression</p>
                                 <h1 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
