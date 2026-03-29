@@ -269,8 +269,6 @@ Some changes were necessary when moving from concept to prototype. First, AI-dri
 
 # Chapter 4: Task 3 - Cloud Computing Evaluation
 
-Chapter 4 evaluates a concrete cloud solution for VitalQuest. The most suitable choice is a public-cloud deployment on Amazon Web Services (AWS), using AWS App Runner for the web application, Amazon RDS for PostgreSQL, Amazon S3 for exported reports and static assets, and Amazon CloudWatch for monitoring. This is appropriate because VitalQuest is an online service that depends on continuous availability, account-based access, secure storage of sensitive wellbeing-related data, and the ability to scale when user activity increases.
-
 ## 4.1 Proposed Cloud Solution
 
 The proposed solution is an AWS-based deployment for the VitalQuest platform. The Next.js application would run on AWS App Runner, which is suitable for web applications that need managed deployment and scaling without full server administration. User and platform data would be stored in Amazon RDS for PostgreSQL. Exported PDF and CSV reports, image assets, and backup files could be stored in Amazon S3. Monitoring, logging, and alerting would be handled through Amazon CloudWatch.
