@@ -77,15 +77,15 @@ Appendix C: AI Use Declaration
 
 # Chapter 1: Introduction
 
-VitalQuest is a digital wellness platform designed to improve long-term user engagement in health-related applications. Many existing services provide exercise, nutrition, or mindfulness tracking, but they often fail to retain users because the experience becomes repetitive and purely functional. VitalQuest addresses this problem by combining wellbeing activities with role-playing game mechanics, story progression, and social participation.
+VitalQuest is a digital wellness platform designed to improve long-term engagement in health-related applications. Many existing services provide exercise, nutrition, or mindfulness tracking, but they often fail to retain users because the experience becomes repetitive and purely functional. VitalQuest addresses this problem through role-playing game mechanics, story progression, and social participation.
 
-The platform is built around balanced wellbeing rather than fitness alone. Physical activity, recovery, sleep, and mindfulness are presented as connected parts of one progression system. A key feature is Bio-Sync, which links wearable-supported data such as steps and sleep to user progress. This allows activity to be reflected in quests, avatar development, and other platform rewards. As a result, VitalQuest is positioned as a more engaging and differentiated online service than conventional habit-tracking applications.
+The platform is built around balanced wellbeing rather than fitness alone. Physical activity, recovery, sleep, and mindfulness are treated as connected parts of one progression system. A key feature is Bio-Sync, which links wearable-supported data such as steps and sleep to user progress. This allows activity to influence quests, avatar development, and rewards, positioning VitalQuest as a more engaging service than conventional habit-tracking applications.
 
 # Chapter 2: Task 1(b) - User Manual
 
 ## 2.1 Accessing the Application
 
-VitalQuest uses a three-stage access flow. New users begin on the public landing page, then move to sign-up to create an account. Returning users use the sign-in page to re-enter the system. This structure separates public business communication from the protected user workspace.
+VitalQuest uses a three-stage access flow. New users begin on the public landing page, then move to sign-up to create an account. Returning users use sign-in to re-enter the system.
 
 ### 2.1.1 Landing Page
 
@@ -107,9 +107,7 @@ The sign-in page is intended for returning users. It uses the same branded layou
 
 ## 2.2 Dashboard and Daily Overview
 
-The dashboard is the main control area of VitalQuest. It gives the user a summary of current progress, Bio-Sync status, active quests, wellbeing indicators, and short-term trends. The page is structured to help the user understand both current performance and the next recommended action. Core elements include level progression, wellbeing score, streak, reward balance, current connected Bio-Sync provider, active missions, and a short weekly signal view.
-
-The dashboard also acts as a navigation hub. From this page, the user can move directly to quests, Bio-Sync management, story progression, analytics, and community features. This makes the dashboard the most important operational page in the system because it combines summary information with onward actions.
+The dashboard is the main control area of VitalQuest. It summarises current progress, Bio-Sync status, active quests, wellbeing indicators, and short-term trends. Core elements include level progression, wellbeing score, streak, reward balance, connected Bio-Sync provider, active missions, and a weekly signal view. It also acts as a navigation hub for quests, Bio-Sync management, story progression, analytics, and community features.
 
 ### 2.2.1 Main Dashboard
 
