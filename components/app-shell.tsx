@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { UserButton } from '@clerk/nextjs';
 import { Crown, Flame, Sparkles } from 'lucide-react';
 import { AppNavigation } from '@/components/app-navigation';
+import { BrandLogo } from '@/components/brand-logo';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { StatusPill } from '@/components/status-pill';
 import { Button } from '@/components/ui/button';
@@ -37,19 +38,7 @@ export function AppShell({
                 <div className="grid gap-4 lg:grid-cols-[280px_minmax(0,1fr)]">
                     <aside className="rounded-[32px] border border-sidebar-border bg-sidebar px-4 py-5 text-sidebar-foreground shadow-md sm:px-5 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto">
                         <div className="flex items-center justify-between gap-3">
-                            <Link href="/" className="flex items-center gap-3">
-                                <span className="flex size-11 items-center justify-center rounded-2xl bg-sidebar-primary text-sm font-bold text-sidebar-primary-foreground">
-                                    VQ
-                                </span>
-                                <span>
-                                    <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-sidebar-foreground/60">
-                                        VitalQuest
-                                    </span>
-                                    <span className="block text-lg font-semibold">
-                                        Command Deck
-                                    </span>
-                                </span>
-                            </Link>
+                            <BrandLogo theme="dark" />
                             <div className="hidden lg:block">
                                 <ThemeToggle />
                             </div>

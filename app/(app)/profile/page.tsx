@@ -1,4 +1,5 @@
 import { updateProfileAction } from '@/app/(app)/actions';
+import { SectionTabs } from '@/components/section-tabs';
 import { SubmitButton } from '@/components/submit-button';
 import { requireViewer } from '@/lib/vitalquest';
 
@@ -8,6 +9,14 @@ export default async function ProfilePage() {
 
     return (
         <div className="space-y-5">
+            <SectionTabs
+                items={[
+                    { href: '/profile', label: 'Profile setup' },
+                    { href: '/profile/avatar', label: 'Avatar' },
+                    { href: '/profile/goals', label: 'Goals' },
+                ]}
+            />
+
             <section className="panel p-5 sm:p-7">
                 <p className="eyebrow">Profile setup</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">

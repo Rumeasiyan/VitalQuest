@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight, Download } from 'lucide-react';
+import { SectionTabs } from '@/components/section-tabs';
 import { Sparkline } from '@/components/sparkline';
 import { StatusPill } from '@/components/status-pill';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,13 @@ export default async function AnalyticsPage() {
 
     return (
         <div className="space-y-5">
+            <SectionTabs
+                items={[
+                    { href: '/analytics', label: 'Dashboard' },
+                    { href: '/analytics/reports', label: 'Reports' },
+                ]}
+            />
+
             <section className="panel p-5 sm:p-7">
                 <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
                     <div>

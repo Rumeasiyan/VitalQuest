@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { HeartPulse, ShieldCheck, Sparkles } from 'lucide-react';
+import { BrandLogo } from '@/components/brand-logo';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 
@@ -33,19 +34,7 @@ export function AuthShell({ children, mode }: AuthShellProps) {
         <main className="min-h-screen bg-background">
             <div className="page-shell py-5 sm:py-6">
                 <div className="flex items-center justify-between rounded-[30px] border bg-card px-4 py-4 shadow-sm sm:px-6">
-                    <Link href="/" className="flex items-center gap-3">
-                        <span className="flex size-11 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-primary-foreground">
-                            VQ
-                        </span>
-                        <span>
-                            <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-                                VitalQuest
-                            </span>
-                            <span className="block text-lg font-semibold">
-                                Access Portal
-                            </span>
-                        </span>
-                    </Link>
+                    <BrandLogo />
                     <ThemeToggle />
                 </div>
 

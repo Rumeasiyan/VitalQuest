@@ -1,4 +1,5 @@
 import { syncBioSyncAction } from '@/app/(app)/actions';
+import { SectionTabs } from '@/components/section-tabs';
 import { StatusPill } from '@/components/status-pill';
 import { SubmitButton } from '@/components/submit-button';
 import { formatProvider, requireViewer } from '@/lib/vitalquest';
@@ -8,6 +9,13 @@ export default async function BioSyncPage() {
 
     return (
         <div className="space-y-5">
+            <SectionTabs
+                items={[
+                    { href: '/bio-sync', label: 'Connections' },
+                    { href: '/bio-sync/history', label: 'Sync history' },
+                ]}
+            />
+
             <section className="panel p-5 sm:p-7">
                 <p className="eyebrow">Bio-Sync connections</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">

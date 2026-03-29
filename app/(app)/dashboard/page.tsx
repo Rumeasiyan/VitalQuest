@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Flame, MoonStar, ShieldCheck, Swords, UsersRound } from 'lucide-react';
 import { completeQuestAction } from '@/app/(app)/actions';
+import { SectionTabs } from '@/components/section-tabs';
 import { Sparkline } from '@/components/sparkline';
 import { StatusPill } from '@/components/status-pill';
 import { SubmitButton } from '@/components/submit-button';
@@ -25,6 +26,13 @@ export default async function DashboardPage() {
 
     return (
         <div className="space-y-5">
+            <SectionTabs
+                items={[
+                    { href: '/dashboard', label: 'Overview' },
+                    { href: '/dashboard/today', label: 'Today view' },
+                ]}
+            />
+
             <section className="panel overflow-hidden p-5 sm:p-7">
                 <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
                     <div>

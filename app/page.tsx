@@ -8,6 +8,7 @@ import {
     Sparkles,
     UsersRound,
 } from 'lucide-react';
+import { BrandLogo } from '@/components/brand-logo';
 import { Button } from '@/components/ui/button';
 
 const featureCards = [
@@ -89,19 +90,7 @@ export default async function Home() {
             <section className="bg-primary text-primary-foreground">
                 <div className="page-shell py-5">
                     <header className="flex flex-col gap-4 border-b border-white/10 py-4 lg:flex-row lg:items-center lg:justify-between">
-                        <Link href="/" className="flex items-center gap-3">
-                            <span className="flex size-11 items-center justify-center rounded-2xl bg-accent text-sm font-bold text-accent-foreground">
-                                VQ
-                            </span>
-                            <span>
-                                <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-white/55">
-                                    VitalQuest
-                                </span>
-                                <span className="block text-lg font-semibold">
-                                    Wellness RPG Platform
-                                </span>
-                            </span>
-                        </Link>
+                        <BrandLogo theme="dark" />
 
                         <nav className="flex flex-wrap items-center gap-3 text-sm text-white/78">
                             <a href="#platform" className="hover:text-white">

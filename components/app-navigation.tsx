@@ -7,6 +7,7 @@ import {
     BookOpen,
     ChartColumn,
     Compass,
+    Settings2,
     ShieldCheck,
     Sparkles,
     UserRound,
@@ -22,7 +23,9 @@ const navItems = [
     { href: '/community', label: 'Community', icon: UsersRound },
     { href: '/analytics', label: 'Analytics', icon: ChartColumn },
     { href: '/profile', label: 'Profile', icon: UserRound },
+    { href: '/onboarding', label: 'Onboarding', icon: Sparkles },
     { href: '/pricing', label: 'Pricing', icon: Activity },
+    { href: '/settings', label: 'Settings', icon: Settings2 },
 ];
 
 export function AppNavigation() {

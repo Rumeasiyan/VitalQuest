@@ -1,4 +1,5 @@
 import { completeQuestAction } from '@/app/(app)/actions';
+import { SectionTabs } from '@/components/section-tabs';
 import { StatusPill } from '@/components/status-pill';
 import { SubmitButton } from '@/components/submit-button';
 import { getCategoryLabel, requireViewer } from '@/lib/vitalquest';
@@ -31,6 +32,14 @@ export default async function QuestsPage() {
 
     return (
         <div className="space-y-5">
+            <SectionTabs
+                items={[
+                    { href: '/quests', label: 'All quests' },
+                    { href: '/quests/daily', label: 'Daily' },
+                    { href: '/quests/weekly', label: 'Weekly' },
+                ]}
+            />
+
             <section className="panel p-5 sm:p-7">
                 <p className="eyebrow">Quest system</p>
                 <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
