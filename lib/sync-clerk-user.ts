@@ -1,5 +1,5 @@
 import { currentUser } from '@clerk/nextjs/server';
-import { getPrisma } from '@/lib/prisma';
+import { syncUserIdentity } from '@/lib/vitalquest';
 
 export async function syncClerkUser() {
     const user = await currentUser();
@@ -19,16 +19,9 @@ export async function syncClerkUser() {
     const name =
         [user.firstName, user.lastName].filter(Boolean).join(' ') || null;
 
-    return getPrisma().user.upsert({
-        where: { clerkId: user.id },
-        update: {
-            email,
-            name,
-        },
-        create: {
-            clerkId: user.id,
-            email,
-            name,
-        },
+    return syncUserIdentity({
+        clerkId: user.id,
+        email,
+        name,
     });
 }

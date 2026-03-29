@@ -8,9 +8,15 @@ import { requireViewer } from '@/lib/vitalquest';
 
 export default async function AnalyticsPage() {
     const viewer = await requireViewer();
-    const sleep = viewer.metrics.map((metric) => Number(metric.sleepHours.toFixed(1)));
-    const mood = viewer.metrics.map((metric) => metric.moodScore);
-    const totalXp = viewer.metrics.reduce((sum, metric) => sum + metric.xpEarned, 0);
+    type ViewerMetric = (typeof viewer.metrics)[number];
+    const sleep = viewer.metrics.map((metric: ViewerMetric) =>
+        Number(metric.sleepHours.toFixed(1)),
+    );
+    const mood = viewer.metrics.map((metric: ViewerMetric) => metric.moodScore);
+    const totalXp = viewer.metrics.reduce(
+        (sum: number, metric: ViewerMetric) => sum + metric.xpEarned,
+        0,
+    );
 
     return (
         <div className="space-y-5">

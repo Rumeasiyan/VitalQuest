@@ -1,6 +1,6 @@
 import { currentUser } from '@clerk/nextjs/server';
 import { getPrisma } from '@/lib/prisma';
-import { ensureWorkspace, recordExport } from '@/lib/vitalquest';
+import { ensureWorkspace, recordExport, syncUserIdentity } from '@/lib/vitalquest';
 
 function toCsv(rows: Array<Array<string | number>>) {
     return rows
@@ -67,10 +67,10 @@ export async function GET(request: Request) {
     }
 
     const prisma = getPrisma();
-    const dbUser = await prisma.user.upsert({
-        where: { clerkId: user.id },
-        update: { email },
-        create: { clerkId: user.id, email, name: user.fullName || null },
+    const dbUser = await syncUserIdentity({
+        clerkId: user.id,
+        email,
+        name: user.fullName || null,
     });
 
     await ensureWorkspace(dbUser.id, dbUser.name ?? undefined);

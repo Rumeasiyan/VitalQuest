@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useSyncExternalStore } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { MoonStar, SunMedium } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 type Theme = 'dark' | 'light';
 
+const defaultThemeMode = process.env.NEXT_PUBLIC_THEME_MODE ?? 'light';
 const enableThemeToggle = process.env.NEXT_PUBLIC_ENABLE_THEME_TOGGLE !== 'false';
 
 function applyTheme(theme: Theme) {
@@ -13,30 +14,70 @@ function applyTheme(theme: Theme) {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     document.documentElement.style.colorScheme = theme;
     localStorage.setItem('theme', theme);
+    window.dispatchEvent(new CustomEvent('themechange'));
 }
 
-function subscribe() {
-    return () => {};
+function resolveTheme(): Theme {
+    const storedTheme = enableThemeToggle ? localStorage.getItem('theme') : null;
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+
+    if (defaultThemeMode === 'dark') {
+        return 'dark';
+    }
+
+    if (defaultThemeMode === 'system') {
+        return storedTheme === 'light' || storedTheme === 'dark'
+            ? storedTheme
+            : systemTheme;
+    }
+
+    return storedTheme === 'light' || storedTheme === 'dark'
+        ? storedTheme
+        : 'light';
+}
+
+function subscribe(onStoreChange: () => void) {
+    if (typeof window === 'undefined') {
+        return () => {};
+    }
+
+    const handleChange = () => onStoreChange();
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    window.addEventListener('themechange', handleChange);
+    window.addEventListener('storage', handleChange);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+        window.removeEventListener('themechange', handleChange);
+        window.removeEventListener('storage', handleChange);
+        mediaQuery.removeEventListener('change', handleChange);
+    };
+}
+
+function getThemeSnapshot(): Theme {
+    if (typeof document === 'undefined') {
+        return 'light';
+    }
+
+    return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
 }
 
 export function ThemeToggle() {
     const mounted = useSyncExternalStore(subscribe, () => true, () => false);
-    const [theme, setTheme] = useState<Theme>(() => {
-        if (typeof document === 'undefined') {
-            return 'light';
-        }
+    const theme = useSyncExternalStore(subscribe, getThemeSnapshot, () => 'light');
 
-        return document.documentElement.dataset.theme === 'light'
-            ? 'light'
-            : 'dark';
-    });
+    useEffect(() => {
+        if (getThemeSnapshot() !== resolveTheme()) {
+            applyTheme(resolveTheme());
+        }
+    }, []);
 
     function toggleTheme() {
-        setTheme((currentTheme) => {
-            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(nextTheme);
-            return nextTheme;
-        });
+        const nextTheme = theme === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme);
     }
 
     if (!enableThemeToggle) {

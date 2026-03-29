@@ -223,6 +223,62 @@ export function formatProvider(provider: ConnectionProvider) {
     return providerNames[provider];
 }
 
+export async function syncUserIdentity(input: {
+    clerkId: string;
+    email: string;
+    name: string | null;
+}) {
+    const prisma = getPrisma();
+    const existingByClerkId = await prisma.user.findUnique({
+        where: { clerkId: input.clerkId },
+    });
+
+    if (existingByClerkId) {
+        const existingByEmail = await prisma.user.findUnique({
+            where: { email: input.email },
+        });
+
+        if (!existingByEmail || existingByEmail.id === existingByClerkId.id) {
+            return prisma.user.update({
+                where: { id: existingByClerkId.id },
+                data: {
+                    email: input.email,
+                    name: input.name,
+                },
+            });
+        }
+
+        return prisma.user.update({
+            where: { id: existingByClerkId.id },
+            data: {
+                name: input.name,
+            },
+        });
+    }
+
+    const existingByEmail = await prisma.user.findUnique({
+        where: { email: input.email },
+    });
+
+    if (existingByEmail) {
+        return prisma.user.update({
+            where: { id: existingByEmail.id },
+            data: {
+                clerkId: input.clerkId,
+                name: input.name,
+            },
+        });
+    }
+
+    return prisma.user.create({
+        data: {
+            clerkId: input.clerkId,
+            email: input.email,
+            name: input.name,
+        },
+    });
+}
+
 export async function requireViewer() {
     const clerkUser = await currentUser();
 
@@ -242,11 +298,10 @@ export async function requireViewer() {
         [clerkUser.firstName, clerkUser.lastName].filter(Boolean).join(' ') ||
         null;
 
-    const prisma = getPrisma();
-    const user = await prisma.user.upsert({
-        where: { clerkId: clerkUser.id },
-        update: { email, name },
-        create: { clerkId: clerkUser.id, email, name },
+    const user = await syncUserIdentity({
+        clerkId: clerkUser.id,
+        email,
+        name,
     });
 
     await ensureWorkspace(user.id, user.name ?? undefined);

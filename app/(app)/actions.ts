@@ -148,14 +148,15 @@ export async function syncBioSyncAction(formData: FormData) {
     const sleepHours = Number((7.1 + (now.getMinutes() % 5) * 0.18).toFixed(1));
     const heartRate = 64 + (now.getMinutes() % 8);
     const xpGain = 110;
+    type ViewerQuest = (typeof viewer.quests)[number];
 
     const fitnessQuest = viewer.quests.find(
-        (quest) =>
+        (quest: ViewerQuest) =>
             quest.category === WellbeingCategory.FITNESS &&
             quest.status !== QuestStatus.COMPLETED,
     );
     const recoveryQuest = viewer.quests.find(
-        (quest) =>
+        (quest: ViewerQuest) =>
             quest.category === WellbeingCategory.RECOVERY &&
             quest.status !== QuestStatus.COMPLETED,
     );
