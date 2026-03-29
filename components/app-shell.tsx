@@ -33,104 +33,102 @@ export function AppShell({
     guildName,
 }: AppShellProps) {
     return (
-        <div className="min-h-screen bg-background">
-            <div className="w-full px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
-                <div className="grid gap-4 lg:grid-cols-[280px_minmax(0,1fr)]">
-                    <aside className="rounded-4xl border border-sidebar-border bg-sidebar px-4 py-5 text-sidebar-foreground shadow-md sm:px-5 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto">
-                        <div className="flex items-center justify-between gap-3">
-                            <BrandLogo theme="dark" />
-                            <div className="hidden lg:block">
-                                <ThemeToggle />
-                            </div>
+        <div className="min-h-screen bg-background lg:grid lg:grid-cols-[292px_minmax(0,1fr)]">
+            <aside className="border-b border-sidebar-border bg-sidebar text-sidebar-foreground lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:border-b-0 lg:border-r">
+                <div className="flex h-full flex-col px-4 py-4 sm:px-6 sm:py-5 lg:px-6 lg:py-6">
+                    <div className="flex items-center justify-between gap-3">
+                        <BrandLogo theme="dark" />
+                        <div className="hidden lg:block">
+                            <ThemeToggle />
                         </div>
+                    </div>
 
-                        <div className="mt-6 rounded-[26px] border border-sidebar-border bg-sidebar-accent px-4 py-4">
-                            <div className="flex items-start justify-between gap-3">
-                                <div>
-                                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sidebar-foreground/55">
-                                        Avatar
-                                    </p>
-                                    <h2 className="mt-2 text-2xl font-semibold">
-                                        {avatarName}
-                                    </h2>
-                                </div>
-                                <StatusPill tone="warning" className="border-0">
-                                    {tierLabel}
-                                </StatusPill>
-                            </div>
-                            <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                                <div className="rounded-2xl bg-sidebar px-3 py-3">
-                                    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sidebar-foreground/55">
-                                        <Crown className="size-3.5" />
-                                        Level
-                                    </div>
-                                    <p className="mt-2 text-2xl font-semibold">
-                                        {level}
-                                    </p>
-                                </div>
-                                <div className="rounded-2xl bg-sidebar px-3 py-3">
-                                    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sidebar-foreground/55">
-                                        <Flame className="size-3.5" />
-                                        Streak
-                                    </div>
-                                    <p className="mt-2 text-2xl font-semibold">
-                                        {streakDays}d
-                                    </p>
-                                </div>
-                                <div className="rounded-2xl bg-sidebar px-3 py-3">
-                                    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sidebar-foreground/55">
-                                        <Sparkles className="size-3.5" />
-                                        Guild
-                                    </div>
-                                    <p className="mt-2 text-sm font-semibold">
-                                        {guildName ?? 'Unassigned'}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="mt-6">
-                            <AppNavigation />
-                        </div>
-
-                        <div className="mt-6 rounded-[26px] border border-sidebar-border px-4 py-4 text-sm text-sidebar-foreground/72">
-                            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sidebar-foreground/55">
-                                Readiness
-                            </p>
-                            <p className="mt-3 leading-6">
-                                Your current setup is optimized for daily quests,
-                                guided recovery, and exportable progress reports.
-                            </p>
-                            <Button
-                                asChild
-                                variant="secondary"
-                                className="mt-4 w-full border-0"
-                            >
-                                <Link href="/bio-sync">Run Bio-Sync</Link>
-                            </Button>
-                        </div>
-                    </aside>
-
-                    <main className="min-w-0">
-                        <header className="mb-4 flex flex-col gap-4 rounded-4xl border bg-card px-4 py-4 shadow-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="mt-6 rounded-[26px] border border-sidebar-border bg-sidebar-accent px-4 py-4">
+                        <div className="flex items-start justify-between gap-3">
                             <div>
-                                <p className="eyebrow">Balanced progression</p>
-                                <h1 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
-                                    Verified wellness, visible momentum.
-                                </h1>
+                                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sidebar-foreground/55">
+                                    Avatar
+                                </p>
+                                <h2 className="mt-2 text-2xl font-semibold">
+                                    {avatarName}
+                                </h2>
                             </div>
-                            <div className="flex items-center gap-3 self-start lg:self-auto">
-                                <div className="lg:hidden">
-                                    <ThemeToggle />
+                            <StatusPill tone="warning" className="border-0">
+                                {tierLabel}
+                            </StatusPill>
+                        </div>
+                        <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                            <div className="rounded-2xl bg-sidebar px-3 py-3">
+                                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sidebar-foreground/55">
+                                    <Crown className="size-3.5" />
+                                    Level
                                 </div>
-                                <UserButton appearance={userButtonAppearance} />
+                                <p className="mt-2 text-2xl font-semibold">
+                                    {level}
+                                </p>
                             </div>
-                        </header>
+                            <div className="rounded-2xl bg-sidebar px-3 py-3">
+                                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sidebar-foreground/55">
+                                    <Flame className="size-3.5" />
+                                    Streak
+                                </div>
+                                <p className="mt-2 text-2xl font-semibold">
+                                    {streakDays}d
+                                </p>
+                            </div>
+                            <div className="rounded-2xl bg-sidebar px-3 py-3">
+                                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-sidebar-foreground/55">
+                                    <Sparkles className="size-3.5" />
+                                    Guild
+                                </div>
+                                <p className="mt-2 text-sm font-semibold">
+                                    {guildName ?? 'Unassigned'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-                        {children}
-                    </main>
+                    <div className="mt-6 flex-1">
+                        <AppNavigation />
+                    </div>
+
+                    <div className="mt-6 rounded-[26px] border border-sidebar-border px-4 py-4 text-sm text-sidebar-foreground/72">
+                        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sidebar-foreground/55">
+                            Readiness
+                        </p>
+                        <p className="mt-3 leading-6">
+                            Your current setup is optimized for daily quests,
+                            guided recovery, and exportable progress reports.
+                        </p>
+                        <Button
+                            asChild
+                            variant="secondary"
+                            className="mt-4 w-full border-0"
+                        >
+                            <Link href="/bio-sync">Run Bio-Sync</Link>
+                        </Button>
+                    </div>
                 </div>
-            </div>
+            </aside>
+
+            <main className="min-w-0 px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
+                <header className="mb-4 flex flex-col gap-4 rounded-4xl border bg-card px-4 py-4 shadow-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <p className="eyebrow">Balanced progression</p>
+                        <h1 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+                            Verified wellness, visible momentum.
+                        </h1>
+                    </div>
+                    <div className="flex items-center gap-3 self-start lg:self-auto">
+                        <div className="lg:hidden">
+                            <ThemeToggle />
+                        </div>
+                        <UserButton appearance={userButtonAppearance} />
+                    </div>
+                </header>
+
+                {children}
+            </main>
         </div>
     );
 }
