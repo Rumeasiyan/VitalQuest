@@ -77,8 +77,30 @@ Appendix C: AI Use Declaration
 
 # Chapter 1: Introduction
 
-VitalQuest is a digital wellness business concept designed to address a common problem in the health and fitness application market. Many existing fitness and wellbeing platforms struggle to retain users over time. Although such platforms often provide tracking tools for exercise, nutrition, or mindfulness, they frequently fail to sustain engagement because the experience becomes repetitive, overly functional, and detached from the user’s sense of motivation. As a result, users may begin with enthusiasm but gradually abandon the platform before meaningful habits are formed.
+VitalQuest is a digital wellness platform designed to improve long-term user engagement in health-related applications. Many existing services provide exercise, nutrition, or mindfulness tracking, but they often fail to retain users because the experience becomes repetitive and purely functional. VitalQuest addresses this problem by combining wellbeing activities with role-playing game mechanics, story progression, and social participation.
 
-In response to this problem, VitalQuest was proposed as a more engaging and differentiated online business. The concept combines health and wellbeing activities with role-playing game mechanics so that users are rewarded for real-world progress through avatar development, quests, story progression, and social participation. Rather than focusing only on isolated fitness tracking, the business is designed around a broader model of balanced wellbeing. This includes physical activity, recovery, sleep, nutrition-related habits, and psychological motivation. A core principle of the platform is that user progress should feel meaningful, visible, and harder to falsify than in many conventional gamified systems.
+The platform is built around balanced wellbeing rather than fitness alone. Physical activity, recovery, sleep, and mindfulness are presented as connected parts of one progression system. A key feature is Bio-Sync, which links wearable-supported data such as steps and sleep to user progress. This allows activity to be reflected in quests, avatar development, and other platform rewards. As a result, VitalQuest is positioned as a more engaging and differentiated online service than conventional habit-tracking applications.
 
-To support this value proposition, the concept introduces a wearable-linked verification model called Bio-Sync. This feature allows health-related activity data, such as step counts, sleep information, and related indicators, to be synchronised into the platform and reflected in the user’s progression. In business terms, this creates a stronger competitive advantage because VitalQuest does not only encourage habit formation but also connects verified action to narrative advancement and social credibility. The concept therefore combines elements of gamification, digital wellness, and online community-building into a single platform experience.
+# Chapter 2: Task 1(b) - User Manual
+
+## 2.1 Accessing the Application
+
+VitalQuest uses a three-stage access flow. New users begin on the public landing page, then move to sign-up to create an account. Returning users use the sign-in page to re-enter the system. This structure separates public business communication from the protected user workspace.
+
+### 2.1.1 Landing Page
+
+The landing page introduces the VitalQuest business and highlights its main features, including verified quests, balanced wellbeing tracking, community functions, and analytics. It contains the brand identity, simple navigation, and clear `Sign in` and `Sign up` controls. If the user is already authenticated, the system redirects directly to the dashboard.
+
+![Figure 2.1: Landing page of the VitalQuest prototype](./image/01-landing.png)
+
+### 2.1.2 Sign-Up
+
+The sign-up page is used by first-time users to create an account. It combines a branded information panel with the registration form and includes links back to the landing page and to sign-in. In the full system, this stage would lead into profile setup, onboarding, and consent for wellbeing-related features.
+
+![Figure 2.2: Sign-up page of the VitalQuest prototype](./image/02-signup.png)
+
+### 2.1.3 Sign-In
+
+The sign-in page is intended for returning users. It uses the same branded layout as sign-up and provides a secure route into the protected application. After successful authentication, the user can continue with existing dashboard data, Bio-Sync records, quests, and community activity. The page also includes links to return home or move to sign-up if required.
+
+![Figure 2.3: Sign-in page of the VitalQuest prototype](./image/03-signin.png)
