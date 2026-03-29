@@ -59,7 +59,7 @@ export function AuthShell({ children, mode }: AuthShellProps) {
                 </section>
 
                 <section className="flex w-full justify-center lg:justify-end">
-                    <div className="flex w-full max-w-[420px] justify-center">
+                    <div className="flex w-full max-w-105 justify-center">
                         <div className="clerk-direct w-full">
                             {children}
                         </div>
