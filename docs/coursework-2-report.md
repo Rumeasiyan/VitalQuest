@@ -146,3 +146,19 @@ The daily quests page focuses on repeatable tasks that support habit formation. 
 The weekly quests page highlights longer progression arcs. These quests are intended to reinforce consistency over time rather than single-day actions, and they connect the user’s effort to larger rewards and narrative movement.
 
 ![Figure 2.8: Weekly quests page of the VitalQuest prototype](./image/08-quests-weekly.png)
+
+## 2.4 Bio-Sync and Verification
+
+Bio-Sync is the verification layer of VitalQuest. This section allows the user to view connected providers, check the latest imported values, and run a sync action. Each connection card shows provider status, sync accuracy, imported data such as steps, heart rate, and sleep, and the time of the last sync. This supports the main business idea that platform progress should be linked to trusted activity data rather than manual reporting.
+
+### 2.4.1 Bio-Sync Overview
+
+The overview page is used to manage connections and review current imported health signals. It also presents security and coverage notes so the user can understand which data is verified and which parts would still require manual input.
+
+![Figure 2.9: Bio-Sync overview page of the VitalQuest prototype](./image/09-bio-sync.png)
+
+### 2.4.2 Bio-Sync History
+
+The history page presents a simple audit trail of provider activity, including connection status, last sync time, steps, and sleep values. This page helps users review imported records and improves transparency in the verification process.
+
+![Figure 2.10: Bio-Sync history page of the VitalQuest prototype](./image/10-bio-sync-history.png)
