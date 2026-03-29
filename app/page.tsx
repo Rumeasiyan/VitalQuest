@@ -86,7 +86,7 @@ export default async function Home() {
     }
 
     return (
-        <main className="pb-8">
+        <main>
             <section className="bg-primary text-primary-foreground">
                 <div className="page-shell py-5">
                     <header className="flex flex-col gap-4 border-b border-white/10 py-4 lg:flex-row lg:items-center lg:justify-between">
@@ -241,9 +241,9 @@ export default async function Home() {
                                             Forest Guardian Walk
                                         </h3>
                                         <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                                            Reach 8,000 verified steps to relight
-                                            the lower ridge trail and open the
-                                            next story checkpoint.
+                                            Reach 8,000 verified steps to
+                                            relight the lower ridge trail and
+                                            open the next story checkpoint.
                                         </p>
                                         <div className="mt-5 h-3 rounded-full bg-muted">
                                             <div className="h-full w-[72%] rounded-full bg-primary" />
@@ -271,7 +271,9 @@ export default async function Home() {
                                                     key={avatar}
                                                     className="flex size-10 items-center justify-center rounded-full border border-primary bg-primary text-sm font-semibold text-primary-foreground"
                                                 >
-                                                    {String.fromCharCode(65 + avatar)}
+                                                    {String.fromCharCode(
+                                                        65 + avatar,
+                                                    )}
                                                 </span>
                                             ))}
                                         </div>
@@ -286,16 +288,21 @@ export default async function Home() {
             <section className="page-shell py-8 sm:py-10">
                 <div className="rounded-[28px] border bg-card px-5 py-4 text-sm text-muted-foreground shadow-sm sm:px-8">
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-                        {['Wearable-ready', 'Guild-led', 'Story-first', 'Coach-friendly', 'Exportable', 'Beginner-safe'].map(
-                            (item) => (
-                                <span
-                                    key={item}
-                                    className="text-center text-sm font-medium tracking-[0.18em] uppercase"
-                                >
-                                    {item}
-                                </span>
-                            ),
-                        )}
+                        {[
+                            'Wearable-ready',
+                            'Guild-led',
+                            'Story-first',
+                            'Coach-friendly',
+                            'Exportable',
+                            'Beginner-safe',
+                        ].map((item) => (
+                            <span
+                                key={item}
+                                className="text-center text-sm font-medium tracking-[0.18em] uppercase"
+                            >
+                                {item}
+                            </span>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -322,7 +329,9 @@ export default async function Home() {
                         >
                             <div className="flex items-start justify-between gap-4">
                                 <div>
-                                    <p className="eyebrow">Core differentiator</p>
+                                    <p className="eyebrow">
+                                        Core differentiator
+                                    </p>
                                     <h3 className="mt-4 text-2xl font-semibold">
                                         {card.title}
                                     </h3>
@@ -472,10 +481,16 @@ export default async function Home() {
                                     Access
                                 </p>
                                 <div className="mt-4 space-y-3 text-sm text-white/72">
-                                    <Link href="/sign-in" className="block hover:text-white">
+                                    <Link
+                                        href="/sign-in"
+                                        className="block hover:text-white"
+                                    >
                                         Sign in
                                     </Link>
-                                    <Link href="/sign-up" className="block hover:text-white">
+                                    <Link
+                                        href="/sign-up"
+                                        className="block hover:text-white"
+                                    >
                                         Create account
                                     </Link>
                                 </div>
