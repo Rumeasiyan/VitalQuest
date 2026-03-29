@@ -104,3 +104,21 @@ The sign-up page is used by first-time users to create an account. It combines a
 The sign-in page is intended for returning users. It uses the same branded layout as sign-up and provides a secure route into the protected application. After successful authentication, the user can continue with existing dashboard data, Bio-Sync records, quests, and community activity. The page also includes links to return home or move to sign-up if required.
 
 ![Figure 2.3: Sign-in page of the VitalQuest prototype](./image/03-signin.png)
+
+## 2.2 Dashboard and Daily Overview
+
+The dashboard is the main control area of VitalQuest. It gives the user a summary of current progress, Bio-Sync status, active quests, wellbeing indicators, and short-term trends. The page is structured to help the user understand both current performance and the next recommended action. Core elements include level progression, wellbeing score, streak, reward balance, current connected Bio-Sync provider, active missions, and a short weekly signal view.
+
+The dashboard also acts as a navigation hub. From this page, the user can move directly to quests, Bio-Sync management, story progression, analytics, and community features. This makes the dashboard the most important operational page in the system because it combines summary information with onward actions.
+
+### 2.2.1 Main Dashboard
+
+The main dashboard presents the overall command view of the user’s account. It highlights current progression, active quest status, guild context, and the latest verified sync information. The page is designed to make key platform features visible at once rather than forcing the user to open several separate pages to understand current status.
+
+![Figure 2.4: Main dashboard of the VitalQuest prototype](./image/04-dashboard.png)
+
+### 2.2.2 Today View
+
+The Today View is a simplified daily planning page. It breaks the day into morning, afternoon, and evening blocks and assigns a clear focus to each period. This gives the user a calmer summary of what should be completed today, especially for recovery, quest completion, and mindfulness-related actions.
+
+![Figure 2.5: Today view of the VitalQuest prototype](./image/05-dashbaord-today.png)
